@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Yash Sah — CS student at the University of Waterloo. I build things I find interesting." />
+  <meta property="og:title" content="Yash Sah | Portfolio" />
+  <meta property="og:description" content="CS @ Waterloo. I build things I find interesting." />
+  <meta property="og:image" content="assets/yash-niagra.jpg" />
+  <meta property="og:type" content="website" />
+  <title>Yash Sah</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+
+  <!-- CSS load order: reset → variables → animations → nav → hero → sections -->
+  <link rel="stylesheet" href="styles/reset.css" />
+  <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/animations.css" />
+  <link rel="stylesheet" href="styles/nav.css" />
+  <link rel="stylesheet" href="styles/hero.css" />
+  <link rel="stylesheet" href="styles/about.css" />
+  <link rel="stylesheet" href="styles/skills.css" />
+  <link rel="stylesheet" href="styles/projects.css" />
+  <link rel="stylesheet" href="styles/contact.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ─────────────────────────────────────────── -->
+  <nav id="navbar" aria-label="Main navigation">
+    <div id="nav-logo" aria-label="Yash Sah home">YS</div>
+    <ul id="nav-links" role="list">
+      <li><a href="#about"    aria-label="About section">About</a></li>
+      <li><a href="#projects" aria-label="Projects section">Projects</a></li>
+      <li><a href="#skills"   aria-label="Skills section">Skills</a></li>
+      <li><a href="#contact"  aria-label="Contact section">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────── -->
+  <section id="hero" aria-label="Introduction">
+
+    <!-- Ember background layers -->
+    <div id="hero-gradient" aria-hidden="true"></div>
+    <div id="ember-overlay" aria-hidden="true"></div>
+
+    <!-- Single text element: starts centered, slides to left on settle -->
+    <div id="hero-text">
+      <div id="hero-words">
+        <span class="hero-word" id="word-hi">Hi,</span>
+        <span class="hero-word" id="word-im">I'm</span>
+        <span class="hero-word" id="word-yash">Yash Sah</span>
+      </div>
+    </div>
+
+    <!-- Tagline + buttons: positioned by JS after text lands -->
+    <div id="hero-left-extras">
+      <p id="hero-tagline">CS @ Waterloo. I build things I find interesting.</p>
+      <div id="hero-cta-buttons">
+        <a href="#projects" class="btn-primary">See my work</a>
+        <a href="#contact"  class="btn-secondary">Get in touch</a>
+      </div>
+    </div>
+
+    <!-- Photo: absolute right side, slides in on settle -->
+    <div id="hero-right" aria-hidden="true">
+      <div id="hero-image-wrapper">
+        <div id="hero-slideshow">
+          <img class="slide slide-active" src="assets/ducks.jpg" alt="duckiess" />
+          <img class="slide slide-active" src="assets/yash-niagra.jpg" alt="Yash at Niagara Falls" />
+          <!-- Add more slides: <img class="slide" src="assets/photo2.jpg" alt="..." /> -->
+        </div>
+        <div id="hero-image-glow"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── About ──────────────────────────────────────────── -->
+  <section id="about" aria-label="About me">
+    <div class="section-label reveal">About Me</div>
+    <div id="about-content">
+      <div id="about-text">
+        <h2 class="reveal">More than just code.</h2>
+        <p class="reveal">
+          I'm a first-year Computer Science student at the University of Waterloo,
+          drawn to the intersection of machine learning, systems, and building tools
+          that actually matter. Whether it's a hackathon sprint or a side project I
+          can't stop thinking about, I love turning ideas into working software.
+        </p>
+        <p class="reveal">
+          Outside of coding, you'll find me exploring new places, watching formula
+          one, or going down rabbit holes on whatever topic caught my attention that
+          week. I believe the best engineers are curious about everything — not just
+          their tech stack.
+        </p>
+        <div id="about-highlights" class="reveal">
+          <div class="highlight-chip">🎓 UWaterloo CS 1B</div>
+          <div class="highlight-chip">🤖 ML / AI Enthusiast</div>
+          <div class="highlight-chip">🏥 Hackathon Builder</div>
+          <div class="highlight-chip">📍 Waterloo, ON</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Projects ───────────────────────────────────────── -->
+  <section id="projects" aria-label="Projects">
+    <div class="section-label reveal">Projects</div>
+    <h2 class="reveal">Things I've built.</h2>
+    <div id="projects-grid">
+
+      <div class="project-card reveal" data-index="0">
+        <div class="project-card-header">
+          <span class="project-title">PulmoScan</span>
+          <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="PulmoScan project link">↗</a>
+        </div>
+        <p class="project-desc">
+          AI-powered lung CT scan analysis tool that detects anomalies using a
+          convolutional neural network. Built at a health-tech hackathon —
+          achieved 91% accuracy on the test set.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">React</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-index="1">
+        <div class="project-card-header">
+          <span class="project-title">Connect Four AI</span>
+          <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Connect Four AI project link">↗</a>
+        </div>
+        <p class="project-desc">
+          A Connect Four engine with a minimax algorithm and alpha-beta pruning.
+          Plays optimally at depth 8 in under 50ms. Features a clean terminal UI
+          and a web-based frontend.
+        </p>
+        <div class="project-tags">
+          <span class="tag">C</span>
+          <span class="tag">Python</span>
+          <span class="tag">Algorithms</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-index="2">
+        <div class="project-card-header">
+          <span class="project-title">Health Data Visualizer</span>
+          <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Health Data Visualizer project link">↗</a>
+        </div>
+        <p class="project-desc">
+          An interactive dashboard that ingests patient CSV data and renders
+          real-time visualizations for vitals, medication history, and trends.
+          Designed for clinician usability.
+        </p>
+        <div class="project-tags">
+          <span class="tag">TypeScript</span>
+          <span class="tag">D3.js</span>
+          <span class="tag">Node.js</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-index="3">
+        <div class="project-card-header">
+          <span class="project-title">Smart Dots</span>
+          <a class="project-link" href="#" target="_blank" rel="noopener" aria-label="Smart Dots project link">↗</a>
+        </div>
+        <p class="project-desc">
+          A genetic algorithm simulation where dots evolve to reach a goal,
+          visualized in real time. Tweakable mutation rates, population sizes,
+          and obstacle layouts.
+        </p>
+        <div class="project-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">Canvas API</span>
+          <span class="tag">Genetic Algorithms</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Skills ─────────────────────────────────────────── -->
+  <section id="skills" aria-label="Skills and tech stack">
+    <div class="section-label reveal">Tech Stack</div>
+    <h2 class="reveal">What I work with.</h2>
+    <div id="skills-grid">
+
+      <div class="skill-category reveal">
+        <h3>Languages</h3>
+        <div class="skill-items">
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+            Python
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" />
+            C
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+            JavaScript
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
+            TypeScript
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3>Frameworks</h3>
+        <div class="skill-items">
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
+            React
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" />
+            FastAPI
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
+            Node.js
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" />
+            PyTorch
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3>Tools</h3>
+        <div class="skill-items">
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+            Git
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
+            Docker
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
+            Linux
+          </div>
+          <div class="skill-item">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" />
+            PostgreSQL
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <h3>Concepts</h3>
+        <div class="skill-items">
+          <div class="skill-item">
+            <span class="skill-icon">🧠</span>
+            Machine Learning
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon">⚙️</span>
+            Data Structures
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon">🌐</span>
+            REST APIs
+          </div>
+          <div class="skill-item">
+            <span class="skill-icon">📊</span>
+            Data Visualization
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Contact ────────────────────────────────────────── -->
+  <section id="contact" aria-label="Contact">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="reveal">Want to build something?</h2>
+    <p id="contact-sub" class="reveal">I'm always open to interesting projects and conversations. Let's talk.</p>
+    <div id="contact-links" class="reveal">
+      <a href="mailto:yash@example.com" class="contact-item" aria-label="Send email to Yash">
+        <span class="contact-icon">✉</span> Email
+      </a>
+      <a href="https://github.com/yashdholakia" class="contact-item" target="_blank" rel="noopener" aria-label="Yash's GitHub profile">
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/yashdholakia" class="contact-item" target="_blank" rel="noopener" aria-label="Yash's LinkedIn profile">
+        LinkedIn
+      </a>
+    </div>
+    <p id="footer-note">Built by Yash &middot; 2025</p>
+  </section>
+
+  <script defer src="dist/bundle.js"></script>
+</body>
+</html>

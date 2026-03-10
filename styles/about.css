@@ -1,0 +1,93 @@
+/* ============================================================
+   ABOUT SECTION
+   ============================================================ */
+
+#about {
+  padding: var(--section-padding);
+}
+
+#about-content {
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+#about-text {
+  flex: 1;
+  max-width: 720px;
+}
+
+/* Shared section label */
+.section-label {
+  display: inline-block;
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+
+/* Section headings */
+#about h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 24px;
+}
+
+#about p {
+  font-family: var(--font-main);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  max-width: 65ch;
+  margin-bottom: 16px;
+}
+
+#about p:last-of-type {
+  margin-bottom: 32px;
+}
+
+/* Highlight chips */
+#about-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.highlight-chip {
+  font-family: var(--font-main);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-accent);
+  padding: 8px 18px;
+  border-radius: var(--border-radius-pill);
+  transition: var(--transition-fast);
+}
+
+.highlight-chip:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #about {
+    padding: 80px 6vw;
+  }
+
+  #about-content {
+    flex-direction: column;
+    gap: 32px;
+  }
+}

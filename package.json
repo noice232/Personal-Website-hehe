@@ -1,0 +1,13 @@
+{
+  "name": "yash-portfolio",
+  "version": "1.0.0",
+  "description": "Yash Sah personal portfolio",
+  "scripts": {
+    "build": "esbuild scripts/hero.ts --bundle --outfile=dist/bundle.js --platform=browser",
+    "watch": "esbuild scripts/hero.ts --bundle --outfile=dist/bundle.js --platform=browser --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.0",
+    "typescript": "^5.4.0"
+  }
+}
