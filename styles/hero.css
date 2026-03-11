@@ -7,23 +7,23 @@
   height: 100vh;
   min-height: 600px;
   overflow: hidden;
-  background: #0A0A0A;
+  background: var(--color-bg);
 }
 
-/* ── Ember background — layer 1 ──────────────────────────── */
+/* ── Warm glow background — layer 1 ──────────────────────── */
 #hero-gradient {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 120px 80px  at 15% 30%, rgba(255,80,0,0.7),    transparent),
-    radial-gradient(ellipse 80px  60px  at 40% 70%, rgba(255,140,0,0.5),   transparent),
-    radial-gradient(ellipse 200px 100px at 70% 20%, rgba(255,60,0,0.6),    transparent),
-    radial-gradient(ellipse 90px  70px  at 85% 60%, rgba(255,120,0,0.4),   transparent),
-    radial-gradient(ellipse 150px 90px  at 25% 80%, rgba(200,50,0,0.5),    transparent),
-    radial-gradient(ellipse 60px  50px  at 55% 45%, rgba(255,200,50,0.6),  transparent),
-    #0A0A0A;
+    radial-gradient(ellipse 220px 150px at 15% 30%, rgba(255,80,0,0.18),   transparent),
+    radial-gradient(ellipse 150px 100px at 40% 70%, rgba(255,140,0,0.14),  transparent),
+    radial-gradient(ellipse 360px 200px at 70% 20%, rgba(255,60,0,0.15),   transparent),
+    radial-gradient(ellipse 160px 110px at 85% 60%, rgba(255,120,0,0.12),  transparent),
+    radial-gradient(ellipse 260px 150px at 25% 80%, rgba(200,50,0,0.13),   transparent),
+    radial-gradient(ellipse 110px  80px at 55% 45%, rgba(255,190,40,0.16), transparent),
+    #FFFAF4;
   background-size: 200% 200%;
   animation: emberBreath 9s ease-in-out infinite;
   transition: opacity 1.8s ease-out;
@@ -31,25 +31,25 @@
 }
 
 #hero-gradient.settling {
-  opacity: 0.55;
+  opacity: 0.3;
 }
 
-/* ── Ember background — layer 2 (screen blend, different speed) ── */
+/* ── Warm glow — layer 2 (multiply blend for light bg) ─────── */
 #ember-overlay {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  mix-blend-mode: screen;
+  mix-blend-mode: multiply;
   background:
-    radial-gradient(ellipse 100px 70px  at 60% 25%, rgba(255,100,0,0.5),  transparent),
-    radial-gradient(ellipse 70px  50px  at 20% 60%, rgba(255,160,0,0.4),  transparent),
-    radial-gradient(ellipse 180px 90px  at 80% 75%, rgba(220,50,0,0.45),  transparent),
-    radial-gradient(ellipse 50px  40px  at 45% 15%, rgba(255,220,80,0.5), transparent),
-    radial-gradient(ellipse 130px 80px  at 5%  50%, rgba(200,60,0,0.4),   transparent);
+    radial-gradient(ellipse 150px 100px at 60% 25%, rgba(255,120,0,0.12),  transparent),
+    radial-gradient(ellipse 100px  70px at 20% 60%, rgba(255,160,0,0.10),  transparent),
+    radial-gradient(ellipse 260px 130px at 80% 75%, rgba(220,80,0,0.11),   transparent),
+    radial-gradient(ellipse  80px  60px at 45% 15%, rgba(255,200,60,0.13), transparent),
+    radial-gradient(ellipse 190px 110px at  5% 50%, rgba(200,60,0,0.10),   transparent);
   background-size: 220% 220%;
   animation: emberBreath2 13s ease-in-out infinite;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 /* ── Hero text — single element, starts centered, slides to left ── */
@@ -75,7 +75,19 @@
   font-size: inherit;
   font-weight: 700;
   line-height: 1.1;
-  background: var(--gradient-text);
+  /* Extended gradient with a warm-white shimmer band for the glisten effect */
+  background: linear-gradient(
+    110deg,
+    var(--color-gradient-start)  0%,
+    var(--color-gradient-mid)    32%,
+    #FFFFFF                      48%,
+    #FFF8F0                      50%,
+    #FFFFFF                      52%,
+    var(--color-gradient-mid)    68%,
+    var(--color-gradient-end)    100%
+  );
+  background-size: 300% 100%;
+  background-position: 130% 50%; /* shimmer parked off-screen right */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -148,7 +160,7 @@
 .btn-secondary {
   background: transparent;
   color: var(--color-text-primary);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
 }
 
 .btn-secondary:hover {

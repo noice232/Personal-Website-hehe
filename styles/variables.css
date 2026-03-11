@@ -6,19 +6,19 @@
   --color-gradient-mid:   #FF7A00;
   --color-gradient-end:   #FFB300;
 
-  /* ── Base palette — dark ember ────────────────────────── */
-  --color-bg:             #0A0A0A;
-  --color-surface:        #1A1A1A;
-  --color-surface-hover:  #222222;
-  --color-text-primary:   #F5F5F5;
-  --color-text-secondary: #A0A0A0;
+  /* ── Base palette — warm light ────────────────────────── */
+  --color-bg:             #FFFAF4;
+  --color-surface:        #FFFFFF;
+  --color-surface-hover:  #FFF5EC;
+  --color-text-primary:   #1A1A1A;
+  --color-text-secondary: #5A5A5A;
   --color-accent:         #FF4500;
-  --color-border:         rgba(255, 255, 255, 0.06);
-  --color-border-accent:  rgba(255, 69, 0, 0.3);
+  --color-border:         rgba(0, 0, 0, 0.08);
+  --color-border-accent:  rgba(255, 69, 0, 0.25);
 
   /* ── Card shadows ─────────────────────────────────────── */
-  --shadow-card:       0 2px 16px rgba(0, 0, 0, 0.3);
-  --shadow-card-hover: 0 8px 32px rgba(255, 69, 0, 0.15);
+  --shadow-card:       0 2px 16px rgba(0, 0, 0, 0.07);
+  --shadow-card-hover: 0 8px 32px rgba(255, 69, 0, 0.12);
 
   /* ── Typography ───────────────────────────────────────── */
   --font-main:    'DM Sans', sans-serif;

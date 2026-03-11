@@ -41,6 +41,12 @@
   100% { background-position: 0% 0%;    opacity: 0.6;  }
 }
 
+/* Shimmer sweep left→right→left on gradient text */
+@keyframes textGlisten {
+  0%, 100% { background-position: 100% 50%; }
+  50%       { background-position: 0% 50%; }
+}
+
 @keyframes wordFadeUp {
   from {
     opacity: 0;

@@ -66,7 +66,7 @@
   async function runHeroAnimation() {
     await delay(300);
     wordHi.classList.add("word-visible");
-    await delay(600);
+    await delay(500);
     wordIm.classList.add("word-visible");
     await delay(600);
     wordYash.classList.add("word-visible");
@@ -111,6 +111,13 @@
     setTimeout(() => {
       initSlideshow();
     }, 1200);
+    setTimeout(() => {
+      [wordHi, wordIm, wordYash].forEach((word) => {
+        word.style.opacity = "1";
+        word.style.transform = "none";
+        word.style.animation = "textGlisten 3.8s ease-in-out infinite";
+      });
+    }, 1400);
   }
   function initSlideshow() {
     const slides = Array.from(
@@ -136,7 +143,7 @@
         });
       }, 520);
     }
-    setInterval(advance, 3500);
+    setInterval(advance, 3e3);
   }
   requestAnimationFrame(() => {
     runHeroAnimation();

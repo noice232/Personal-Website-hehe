@@ -111,6 +111,17 @@ function settleHero(): void {
   setTimeout(() => {
     initSlideshow();
   }, 1200);
+
+  // 7. All words glisten in sync after text has fully settled
+  setTimeout(() => {
+    [wordHi, wordIm, wordYash].forEach((word) => {
+      // Lock opacity/transform via inline style so the forwards fill isn't
+      // lost when we replace the animation property
+      word.style.opacity   = '1';
+      word.style.transform = 'none';
+      word.style.animation = 'textGlisten 3.8s ease-in-out infinite';
+    });
+  }, 1400);
 }
 
 // ── Slideshow ──────────────────────────────────────────────
