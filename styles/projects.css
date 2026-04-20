@@ -1,14 +1,12 @@
 /* ============================================================
-   PROJECTS SECTION
+   PROJECTS SECTION — Bento grid layout
    ============================================================ */
 
 #projects {
   padding: var(--section-padding);
 }
 
-#projects .section-label {
-  margin-bottom: 16px;
-}
+#projects .section-label { margin-bottom: 16px; }
 
 #projects h2 {
   font-family: var(--font-display);
@@ -22,31 +20,117 @@
   margin-bottom: 48px;
 }
 
+/* ── Bento grid ──────────────────────────────────────────── */
 #projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "feat feat card2"
+    "card3 card4 .";
+  gap: 20px;
 }
 
+/* ── Base card ───────────────────────────────────────────── */
 .project-card {
   background: var(--color-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: var(--border-radius-card);
   padding: 28px;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  transition: var(--transition-smooth);
-  cursor: default;
+  gap: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  /* 3D tilt — JS applies rotateX/Y, CSS provides perspective */
+  transform-style: preserve-3d;
 }
 
 .project-card:hover {
-  border-color: rgba(255, 69, 0, 0.35);
-  transform: translateY(-4px);
+  border-color: var(--color-border-accent);
   box-shadow: var(--shadow-card-hover);
 }
 
+/* ── Featured card ───────────────────────────────────────── */
+.project-featured {
+  grid-area: feat;
+  padding: 36px;
+  background:
+    linear-gradient(135deg, rgba(255, 69, 0, 0.06) 0%, rgba(255, 179, 0, 0.04) 100%),
+    var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .project-featured {
+  background:
+    linear-gradient(135deg, rgba(255, 69, 0, 0.12) 0%, rgba(255, 179, 0, 0.06) 100%),
+    var(--color-surface);
+}
+
+/* Animated gradient border on featured card */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.project-featured::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(var(--border-radius-card) + 1px);
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 20%,
+    var(--color-gradient-start) 40%,
+    var(--color-gradient-end) 60%,
+    transparent 80%
+  );
+  animation: rotateBorder 4s linear infinite;
+  z-index: -1;
+}
+
+.project-featured::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(var(--border-radius-card) - 1px);
+  background: var(--color-surface-solid);
+  z-index: -1;
+}
+
+[data-theme="dark"] .project-featured::after {
+  background: var(--color-surface-solid);
+}
+
+/* "Featured" badge */
+.featured-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-main);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: rgba(255, 69, 0, 0.08);
+  border: 1px solid rgba(255, 69, 0, 0.2);
+  padding: 4px 12px;
+  border-radius: var(--border-radius-pill);
+  margin-bottom: 4px;
+  width: fit-content;
+}
+
+/* Grid areas for regular cards */
+.project-card[data-index="1"] { grid-area: card2; }
+.project-card[data-index="2"] { grid-area: card3; }
+.project-card[data-index="3"] { grid-area: card4; }
+
+/* ── Card internals ──────────────────────────────────────── */
 .project-card-header {
   display: flex;
   justify-content: space-between;
@@ -56,7 +140,7 @@
 
 .project-title {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
   background: var(--gradient-text);
   -webkit-background-clip: text;
@@ -65,29 +149,49 @@
   line-height: 1.3;
 }
 
+.project-featured .project-title { font-size: 1.5rem; }
+
 .project-link {
   color: var(--color-accent);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   line-height: 1;
   flex-shrink: 0;
-  display: inline-block;
-  transition: transform 0.25s var(--ease-out), color 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-accent);
+  transition: transform 0.25s var(--ease-out), background 0.2s ease, color 0.2s ease;
   margin-top: 2px;
 }
 
 .project-link:hover {
-  transform: rotate(45deg) scale(1.2);
-  color: var(--color-gradient-end);
+  transform: rotate(45deg);
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
 }
 
+/* Description — truncated by default, expands on hover */
 .project-desc {
   font-family: var(--font-main);
   font-size: 0.9rem;
-  line-height: 1.7;
+  line-height: 1.72;
   color: var(--color-text-secondary);
   flex: 1;
+  overflow: hidden;
+  max-height: 3.5em; /* ~2 lines */
+  transition: max-height 0.45s ease;
 }
 
+.project-card:hover .project-desc,
+.project-featured .project-desc {
+  max-height: 12em;
+}
+
+/* Tags */
 .project-tags {
   display: flex;
   flex-wrap: wrap;
@@ -100,19 +204,40 @@
   font-weight: 500;
   padding: 4px 10px;
   border-radius: var(--border-radius-pill);
-  background: rgba(255, 69, 0, 0.08);
+  background: rgba(255, 69, 0, 0.07);
   color: var(--color-accent);
-  border: 1px solid rgba(255, 69, 0, 0.2);
+  border: 1px solid rgba(255, 69, 0, 0.18);
   letter-spacing: 0.02em;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.project-card:hover .tag {
+  background: rgba(255, 69, 0, 0.12);
+  border-color: rgba(255, 69, 0, 0.3);
 }
 
 /* ── Responsive ──────────────────────────────────────────── */
-@media (max-width: 768px) {
-  #projects {
-    padding: 80px 6vw;
+@media (max-width: 900px) {
+  #projects-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "feat feat"
+      "card2 card3"
+      "card4 .";
   }
+}
+
+@media (max-width: 640px) {
+  #projects { padding: 80px 6vw; }
 
   #projects-grid {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "feat"
+      "card2"
+      "card3"
+      "card4";
   }
+
+  .project-desc { max-height: none; }
 }

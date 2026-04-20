@@ -10,31 +10,45 @@
   background: var(--color-bg);
 }
 
-/* ── Warm glow background — layer 1 ──────────────────────── */
+/* ── Gradient mesh background — layer 1 ──────────────────── */
 #hero-gradient {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 220px 150px at 15% 30%, rgba(255,80,0,0.18),   transparent),
-    radial-gradient(ellipse 150px 100px at 40% 70%, rgba(255,140,0,0.14),  transparent),
-    radial-gradient(ellipse 360px 200px at 70% 20%, rgba(255,60,0,0.15),   transparent),
-    radial-gradient(ellipse 160px 110px at 85% 60%, rgba(255,120,0,0.12),  transparent),
-    radial-gradient(ellipse 260px 150px at 25% 80%, rgba(200,50,0,0.13),   transparent),
-    radial-gradient(ellipse 110px  80px at 55% 45%, rgba(255,190,40,0.16), transparent),
-    #FFFAF4;
-  background-size: 200% 200%;
+    radial-gradient(at 15% 20%, rgba(255, 107, 53, 0.16) 0px, transparent 45%),
+    radial-gradient(at 55% 12%, rgba(255, 179, 0,  0.13) 0px, transparent 45%),
+    radial-gradient(at 85% 55%, rgba(255, 140, 0,  0.13) 0px, transparent 45%),
+    radial-gradient(at 40% 75%, rgba(255, 69,  0,  0.11) 0px, transparent 45%),
+    radial-gradient(at 70% 85%, rgba(255, 200, 50, 0.09) 0px, transparent 45%),
+    radial-gradient(at 25% 55%, rgba(200, 50,  0,  0.09) 0px, transparent 45%);
+  background-size: 100% 100%;
   animation: emberBreath 9s ease-in-out infinite;
   transition: opacity 1.8s ease-out;
   opacity: 1;
 }
 
-#hero-gradient.settling {
-  opacity: 0.3;
+[data-theme="dark"] #hero-gradient {
+  background:
+    radial-gradient(at 20% 25%, rgba(255, 80,  0, 0.55) 0px, transparent 50%),
+    radial-gradient(at 80% 10%, rgba(255, 140, 0, 0.40) 0px, transparent 50%),
+    radial-gradient(at 5%  70%, rgba(255, 60,  0, 0.50) 0px, transparent 50%),
+    radial-gradient(at 75% 65%, rgba(255, 120, 0, 0.35) 0px, transparent 50%),
+    radial-gradient(at 45% 90%, rgba(200, 50,  0, 0.45) 0px, transparent 50%),
+    radial-gradient(at 55% 45%, rgba(255, 200, 50,0.40) 0px, transparent 40%),
+    #0D0D0D;
 }
 
-/* ── Warm glow — layer 2 (multiply blend for light bg) ─────── */
+#hero-gradient.settling {
+  opacity: 0.35;
+}
+
+[data-theme="dark"] #hero-gradient.settling {
+  opacity: 0.55;
+}
+
+/* ── Gradient mesh — layer 2 ─────────────────────────────── */
 #ember-overlay {
   position: absolute;
   inset: 0;
@@ -42,17 +56,22 @@
   pointer-events: none;
   mix-blend-mode: multiply;
   background:
-    radial-gradient(ellipse 150px 100px at 60% 25%, rgba(255,120,0,0.12),  transparent),
-    radial-gradient(ellipse 100px  70px at 20% 60%, rgba(255,160,0,0.10),  transparent),
-    radial-gradient(ellipse 260px 130px at 80% 75%, rgba(220,80,0,0.11),   transparent),
-    radial-gradient(ellipse  80px  60px at 45% 15%, rgba(255,200,60,0.13), transparent),
-    radial-gradient(ellipse 190px 110px at  5% 50%, rgba(200,60,0,0.10),   transparent);
-  background-size: 220% 220%;
+    radial-gradient(at 60% 20%, rgba(255, 120, 0,  0.12) 0px, transparent 45%),
+    radial-gradient(at 20% 55%, rgba(255, 160, 0,  0.10) 0px, transparent 45%),
+    radial-gradient(at 80% 75%, rgba(220, 80,  0,  0.11) 0px, transparent 45%),
+    radial-gradient(at 40% 15%, rgba(255, 200, 60, 0.12) 0px, transparent 45%),
+    radial-gradient(at 75% 45%, rgba(200, 60,  0,  0.10) 0px, transparent 45%);
+  background-size: 100% 100%;
   animation: emberBreath2 13s ease-in-out infinite;
   opacity: 0.8;
 }
 
-/* ── Hero text — single element, starts centered, slides to left ── */
+[data-theme="dark"] #ember-overlay {
+  mix-blend-mode: screen;
+  opacity: 0.65;
+}
+
+/* ── Hero text — single element, starts centered, slides left ── */
 #hero-text {
   position: absolute;
   top: 50%;
@@ -60,7 +79,7 @@
   transform: translate(-50%, -50%);
   z-index: 2;
   white-space: nowrap;
-  font-size: clamp(3.5rem, 8vw, 7rem);  /* words inherit */
+  font-size: clamp(3.5rem, 8vw, 7rem);
 }
 
 #hero-words {
@@ -75,19 +94,19 @@
   font-size: inherit;
   font-weight: 700;
   line-height: 1.1;
-  /* Extended gradient with a warm-white shimmer band for the glisten effect */
+  /* Shimmer-only gradient — no flat solid endpoints */
   background: linear-gradient(
     110deg,
-    var(--color-gradient-start)  0%,
-    var(--color-gradient-mid)    32%,
-    #FFFFFF                      48%,
+    var(--color-gradient-mid)    0%,
+    #FFD070                      12%,
+    #FFFFFF                      28%,
     #FFF8F0                      50%,
-    #FFFFFF                      52%,
-    var(--color-gradient-mid)    68%,
-    var(--color-gradient-end)    100%
+    #FFFFFF                      72%,
+    #FFD070                      88%,
+    var(--color-gradient-mid)    100%
   );
   background-size: 300% 100%;
-  background-position: 130% 50%; /* shimmer parked off-screen right */
+  background-position: 95% 50%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -99,16 +118,16 @@
   animation: wordFadeUp 900ms var(--ease-out) forwards;
 }
 
-/* ── Left extras — tagline + buttons, top set by JS ──────── */
+/* ── Left extras — tagline + buttons (top set by JS) ─────── */
 #hero-left-extras {
   position: absolute;
   left: 10vw;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s ease-out;
+  transition: opacity 0.55s ease-out;
   z-index: 2;
 }
 
@@ -121,14 +140,16 @@
   font-family: var(--font-main);
   font-size: clamp(1rem, 2vw, 1.2rem);
   color: var(--color-text-secondary);
-  line-height: 1.6;
-  max-width: 44ch;
+  line-height: 1.65;
+  max-width: 46ch;
+  min-height: 1.8em; /* reserve space for typewriter */
 }
 
 #hero-cta-buttons {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 /* ── Buttons ─────────────────────────────────────────────── */
@@ -142,17 +163,16 @@
   font-weight: 500;
   letter-spacing: 0.01em;
   transition: var(--transition-smooth);
-  cursor: pointer;
 }
 
 .btn-primary {
   background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
   color: #fff;
   box-shadow: 0 4px 20px rgba(255, 69, 0, 0.35);
+  will-change: transform;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(255, 69, 0, 0.5);
   filter: brightness(1.08);
 }
@@ -161,10 +181,14 @@
   background: transparent;
   color: var(--color-text-primary);
   border: 1.5px solid rgba(0, 0, 0, 0.18);
+  will-change: transform;
+}
+
+[data-theme="dark"] .btn-secondary {
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 .btn-secondary:hover {
-  transform: translateY(-2px);
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
@@ -190,12 +214,47 @@
   display: inline-block;
 }
 
-/* Slideshow — 16:9, cover, flush, no background ─────────── */
+/* Floating badge on photo */
+#hero-image-badge {
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--color-surface-solid);
+  border: 1px solid var(--color-border-accent);
+  border-radius: var(--border-radius-pill);
+  padding: 7px 16px;
+  font-family: var(--font-main);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(255, 69, 0, 0.10);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-out);
+}
+
+#hero-image-badge.visible { opacity: 1; }
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+/* Slideshow */
 #hero-slideshow {
   position: relative;
-  width: clamp(850px, 42vw, 580px);
+  width: clamp(300px, 42vw, 560px);
   aspect-ratio: 16 / 9;
-  border-radius: 15px;
+  border-radius: 16px;
   overflow: hidden;
   z-index: 1;
 }
@@ -212,32 +271,23 @@
   will-change: transform, opacity;
 }
 
-.slide.slide-active {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.slide.slide-exiting {
-  transform: translateX(-100%);
-  opacity: 1;
-}
+.slide.slide-active  { transform: translateX(0);    opacity: 1; }
+.slide.slide-exiting { transform: translateX(-100%); opacity: 1; }
 
 #hero-image-glow {
   position: absolute;
-  inset: -20px;
+  inset: -24px;
   border-radius: 24px;
   background: radial-gradient(ellipse at center, var(--color-accent), transparent 70%);
-  filter: blur(40px);
-  opacity: 0.3;
+  filter: blur(44px);
+  opacity: 0.22;
   z-index: 0;
   pointer-events: none;
 }
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 900px) {
-  #hero-right {
-    display: none; /* hide photo on smaller screens to avoid overlap */
-  }
+  #hero-right { display: none; }
 
   #hero-text {
     white-space: normal;
@@ -260,11 +310,6 @@
     width: 90vw;
   }
 
-  #hero-tagline {
-    max-width: 100%;
-  }
-
-  #hero-cta-buttons {
-    justify-content: center;
-  }
+  #hero-tagline { max-width: 100%; }
+  #hero-cta-buttons { justify-content: center; }
 }

@@ -1,0 +1,104 @@
+/* ============================================================
+   GLOBAL EFFECTS: noise overlay, dot grid, spotlight,
+   scroll-progress bar, sticky section side-label
+   ============================================================ */
+
+/* ── Grain / noise texture ──────────────────────────────── */
+#noise-overlay {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+}
+
+[data-theme="dark"] #noise-overlay {
+  opacity: 0.055;
+}
+
+/* ── Dot grid (applied to section backgrounds) ──────────── */
+.dot-grid {
+  background-image: radial-gradient(
+    circle,
+    var(--dot-color) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 26px 26px;
+}
+
+/* ── Spotlight (follows cursor) ──────────────────────────── */
+#spotlight {
+  position: fixed;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 69, 0, 0.055) 0%,
+    transparent 70%
+  );
+  transition: left 0.12s linear, top 0.12s linear;
+  will-change: left, top;
+}
+
+[data-theme="dark"] #spotlight {
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 100, 0, 0.08) 0%,
+    transparent 70%
+  );
+}
+
+/* ── Scroll progress bar ─────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
+  z-index: 999;
+  transition: width 0.08s linear;
+  will-change: width;
+}
+
+/* ── Sticky side section label ───────────────────────────── */
+#section-label-side {
+  position: fixed;
+  left: 2.2vw;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center center;
+  font-family: var(--font-main);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out), color 0.3s ease;
+  z-index: 60;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+#section-label-side.visible {
+  opacity: 0.55;
+}
+
+/* Only show on wide screens */
+@media (max-width: 1200px) {
+  #section-label-side { display: none; }
+}

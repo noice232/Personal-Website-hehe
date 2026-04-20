@@ -1,12 +1,6 @@
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
@@ -15,59 +9,74 @@
 }
 
 @keyframes fadeDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Ember layer 1: slow background-position drift + opacity pulse, 9s loop */
+/* Hero background — layer 1: gentle opacity pulse */
 @keyframes emberBreath {
-  0%   { background-position: 0% 0%;   opacity: 0.85; }
-  33%  { background-position: 8% 5%;   opacity: 1.0;  }
-  66%  { background-position: -5% 8%;  opacity: 0.9;  }
-  100% { background-position: 0% 0%;   opacity: 0.85; }
+  0%   { opacity: 0.85; }
+  33%  { opacity: 1.0;  }
+  66%  { opacity: 0.9;  }
+  100% { opacity: 0.85; }
 }
 
-/* Ember layer 2: different speed (13s) so layers drift out of sync → organic flicker */
+/* Hero background — layer 2: different speed → organic flicker */
 @keyframes emberBreath2 {
-  0%   { background-position: 0% 0%;    opacity: 0.6;  }
-  40%  { background-position: -10% 6%;  opacity: 0.75; }
-  70%  { background-position: 6% -4%;   opacity: 0.55; }
-  100% { background-position: 0% 0%;    opacity: 0.6;  }
+  0%   { opacity: 0.6;  }
+  40%  { opacity: 0.75; }
+  70%  { opacity: 0.55; }
+  100% { opacity: 0.6;  }
 }
 
-/* Shimmer sweep left→right→left on gradient text */
+/* Glisten shimmer sweep on gradient text */
 @keyframes textGlisten {
-  0%, 100% { background-position: 100% 50%; }
-  50%       { background-position: 0% 50%; }
+  0%, 100% { background-position: 150% 50%; }
+  50%       { background-position:  100% 50%; }
 }
 
+/* Word-by-word hero entrance */
 @keyframes wordFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Utility: added by hero.ts to trigger entry animations */
+/* Stats count-up pulse */
+@keyframes statPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* Rotating conic border on featured card */
+@keyframes rotateBorder {
+  from { --border-angle: 0deg; }
+  to   { --border-angle: 360deg; }
+}
+
+/* Pulsing badge dot */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.5); }
+}
+
+/* Timeline dot appear */
+@keyframes timelineDotPop {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* ── Utility classes ──────────────────────────────────── */
+
 .visible {
   animation: fadeUp 0.7s var(--ease-out) forwards;
 }
 
-/* Utility: added by scroll.ts to trigger scroll-reveal */
+/* Scroll-reveal base state */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  transform: translateY(28px);
+  transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
 }
 
 .reveal.revealed {
@@ -75,24 +84,22 @@
   transform: translateY(0);
 }
 
-/* Accessibility: disable all motion for users who prefer it */
+/* Staggered reveal delays for grid children */
+.stagger-grid > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-grid > *:nth-child(2) { transition-delay: 70ms; }
+.stagger-grid > *:nth-child(3) { transition-delay: 140ms; }
+.stagger-grid > *:nth-child(4) { transition-delay: 210ms; }
+.stagger-grid > *:nth-child(5) { transition-delay: 280ms; }
+.stagger-grid > *:nth-child(6) { transition-delay: 350ms; }
+
+/* ── Accessibility ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-
-  .visible {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
+  .reveal { opacity: 1; transform: none; }
+  .visible { animation: none; opacity: 1; }
 }

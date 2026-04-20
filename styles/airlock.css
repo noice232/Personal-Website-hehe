@@ -1,0 +1,140 @@
+/* ── Airlock Door Transition ─────────────────────────────────────────────── */
+
+#airlock-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Panels are hidden by default (translateX off-screen) */
+#airlock-left,
+#airlock-right {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #111111;
+  display: flex;
+  align-items: center;
+  /* No CSS transition — JS drives animation via requestAnimationFrame */
+}
+
+#airlock-left {
+  left: 0;
+  transform: translateX(-100%);
+  justify-content: flex-end;
+  padding-right: 0;
+}
+
+#airlock-right {
+  right: 0;
+  transform: translateX(100%);
+  justify-content: flex-start;
+  padding-left: 0;
+}
+
+/* "Ya" + "sh" brand letters that meet at center seam */
+#airlock-ya,
+#airlock-sh {
+  font-family: var(--font-display, 'Fraunces', serif);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 700;
+  color: #c8a87a;
+  line-height: 1;
+  display: block;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+#airlock-left.doors-closed #airlock-ya,
+#airlock-right.doors-closed #airlock-sh {
+  opacity: 1;
+}
+
+/* Destination label centered in the seam area */
+#airlock-destination {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 3.8rem);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d4b896;
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 120ms ease;
+  pointer-events: none;
+}
+
+#airlock-overlay.doors-closed #airlock-destination {
+  opacity: 1;
+}
+
+/* When overlay is active, allow pointer-events to block clicks */
+#airlock-overlay.active {
+  pointer-events: all;
+}
+
+/* ── Section stack layout ────────────────────────────────── */
+
+html, body {
+  overflow: hidden;
+  height: 100%;
+}
+
+#sections-wrapper {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Next-section footer ─────────────────────────────────── */
+
+.section-nav-footer {
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 0 2rem;
+}
+
+/* Hero has overflow:hidden and all-absolute content — pin absolutely */
+.section-nav-footer--abs {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 0;
+  pointer-events: none;
+}
+
+.section-nav-footer--abs .section-next-btn {
+  pointer-events: all;
+}
+
+.section-next-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.4rem;
+  background: transparent;
+  border: 1px solid rgba(200, 168, 122, 0.3);
+  border-radius: 100px;
+  color: var(--color-text-muted);
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 180ms ease, border-color 180ms ease;
+  white-space: nowrap;
+}
+
+.section-next-btn:hover {
+  color: var(--color-accent, #c8a87a);
+  border-color: var(--color-accent, #c8a87a);
+}

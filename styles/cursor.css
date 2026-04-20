@@ -1,0 +1,61 @@
+/* ============================================================
+   CUSTOM CURSOR
+   Only active on hover-capable (non-touch) devices.
+   cursor.ts adds .custom-cursor to <body> and updates
+   --cx / --cy CSS variables via RAF.
+   ============================================================ */
+
+#cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease, opacity 0.25s ease, background 0.25s ease;
+  will-change: transform;
+}
+
+#cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-accent);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0.55;
+  /* ring lags behind dot slightly */
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.25s ease,
+              border-color 0.25s ease, transform 0.14s ease;
+  will-change: transform;
+}
+
+/* Hover state — ring expands on interactive elements */
+#cursor-ring.hovered {
+  width: 48px;
+  height: 48px;
+  opacity: 0.35;
+  border-color: var(--color-accent);
+}
+
+/* Click state — dot squishes */
+#cursor-dot.clicking {
+  transform: translate(-50%, -50%) scale(0.6);
+  background: var(--color-gradient-end);
+}
+
+/* Hide on mobile / touch (cursor.ts also guards this via matchMedia) */
+@media (hover: none), (pointer: coarse) {
+  #cursor-dot,
+  #cursor-ring {
+    display: none;
+  }
+}

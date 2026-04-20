@@ -1,32 +1,30 @@
 /**
  * scroll.ts
- * Scroll-reveal: observes all .reveal elements and adds .revealed when they enter the viewport.
+ * Scroll-reveal with staggered grid support.
  * Self-initializing — no exports needed.
  */
 
 function initScrollReveal(): void {
-  const revealElements = document.querySelectorAll<HTMLElement>('.reveal');
-
-  if (revealElements.length === 0) return;
+  const revealEls = document.querySelectorAll<HTMLElement>('.reveal');
+  if (revealEls.length === 0) return;
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          // Once revealed, stop observing to save resources
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target as HTMLElement;
+
+        // If inside a .stagger-grid parent, stagger is handled by CSS
+        // transition-delay — just add the class and the CSS does the rest
+        el.classList.add('revealed');
+        observer.unobserve(el);
       });
     },
-    {
-      threshold: 0.15,
-      rootMargin: '0px 0px -40px 0px',
-    }
+    { threshold: 0.12, rootMargin: '0px 0px -32px 0px' }
   );
 
-  revealElements.forEach((el) => observer.observe(el));
+  revealEls.forEach((el) => observer.observe(el));
 }
 
-// Run after DOM is ready (this script is imported by hero.ts which is deferred)
 initScrollReveal();
