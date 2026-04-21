@@ -34,7 +34,7 @@ export function initTypewriter(): void {
   if (!el) return;
 
   const phrases = [
-    'CS @ Waterloo. I build things I find interesting.',
+    'CS @ Waterloo. ICPC national champion. I build things that matter.',
     'Machine learning engineer in training.',
     'Hackathon builder. Curious by default.',
     'Turning caffeine and ideas into software.',
@@ -207,10 +207,13 @@ export function initStatsCounter(): void {
         }
       });
     },
-    { threshold: 0.6 }
+    { threshold: 0.3 }
   );
 
-  stats.forEach((s) => observer.observe(s));
+  stats.forEach((s) => {
+    s.textContent = '0';
+    observer.observe(s);
+  });
 }
 
 // ── Mouse parallax on hero photo ───────────────────────────
