@@ -216,49 +216,171 @@
   <!-- ── Timeline ───────────────────────────────────────── -->
   <section id="timeline" aria-label="Timeline and experience">
     <div class="section-label reveal">Journey</div>
-    <h2 class="reveal scramble">How I got here.</h2>
+    <h2 class="reveal scramble">Everything, start to finish.</h2>
 
-    <div class="timeline-track stagger-grid">
+    <div class="timeline">
 
+      <!-- 1 — University of Waterloo -->
       <div class="timeline-item reveal">
-        <div class="timeline-date">Sept 2024 – Present</div>
-        <div class="timeline-connector"><div class="timeline-dot"></div></div>
-        <div class="timeline-content">
+        <div class="timeline-card">
+          <div class="timeline-date">Sept 2024 – Present</div>
+          <div class="timeline-category">🎓 Education</div>
           <h3>University of Waterloo</h3>
-          <div class="timeline-role">Computer Science, 2A</div>
-          <p>Studying CS with a focus on algorithms, machine learning, and systems programming. Faculty of Mathematics Global Scholarship. President's Scholarship of Distinction.</p>
+          <div class="timeline-subtitle">Bachelor of Computer Science · GPA 3.9/4.0 · Class of 2029</div>
+          <p>Studying CS with a focus on algorithms, machine learning, and systems programming. Holder of the Faculty of Mathematics Global Scholarship ($15k CAD) and the President's Scholarship of Distinction ($2k CAD).</p>
           <div class="timeline-tags">
             <span class="timeline-tag">Algorithms</span>
             <span class="timeline-tag">C</span>
             <span class="timeline-tag">Python</span>
             <span class="timeline-tag">Linear Algebra</span>
+            <span class="timeline-tag">Systems</span>
           </div>
         </div>
       </div>
 
+      <!-- 2 — Hack Canada 2026 -->
       <div class="timeline-item reveal">
-        <div class="timeline-date">Feb 2026</div>
-        <div class="timeline-connector"><div class="timeline-dot"></div></div>
-        <div class="timeline-content">
+        <div class="timeline-card">
+          <div class="timeline-date">Feb 2026</div>
+          <div class="timeline-category">🏆 Hackathon — Winner</div>
           <h3>Hack Canada 2026</h3>
-          <div class="timeline-role">Build with AI Track — 1st Place</div>
-          <p>Built PulmoScan — an AI-powered lung CT scan analysis tool achieving 91% accuracy. Won the Build with AI track.</p>
+          <div class="timeline-subtitle">Build with AI Track Winner · Finalist: Most Technically Complex Hack</div>
+          <p>Built PulmoScan — an ML-powered lung disease detection and 3D visualisation platform from raw DICOM CT scans. Engineered a dual-track pipeline combining Otsu thresholding with a fine-tuned EfficientNet-B0 classifier and Grad-CAM heatmaps, paired with an interactive VTK.js 3D lung viewer using marching cubes surface extraction. Named finalist for Most Technically Complex Hack and currently advancing to Google's startup funding track.</p>
           <div class="timeline-tags">
+            <span class="timeline-tag">Python</span>
             <span class="timeline-tag">PyTorch</span>
-            <span class="timeline-tag">FastAPI</span>
             <span class="timeline-tag">React</span>
+            <span class="timeline-tag">Next.js</span>
+            <span class="timeline-tag">VTK.js</span>
+            <span class="timeline-tag">FastAPI</span>
             <span class="timeline-tag">EfficientNet</span>
+            <span class="timeline-tag">GradCAM</span>
           </div>
         </div>
       </div>
 
+      <!-- 3 — UW Management Consulting Case Competition -->
       <div class="timeline-item reveal">
-        <div class="timeline-date">2024</div>
-        <div class="timeline-connector"><div class="timeline-dot"></div></div>
-        <div class="timeline-content">
+        <div class="timeline-card">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-category">🏆 Case Competition — Semifinalist</div>
+          <h3>UW Management Consulting Case Competition</h3>
+          <div class="timeline-subtitle">Semifinalist · Top 8 of 80 teams</div>
+          <p>Reached the semifinals with a $1B ESG capital-allocation framework for Saudi Aramco, modelling ~1.5 MtCO₂e/year verified abatement within 36 months at a ~16% portfolio IRR. Conducted primary research via Bloomberg Terminals and IEA net-zero pathways; built a MAC curve with 10-year NPV sensitivity benchmarked against EU ETS. Defended to judges from McKinsey, BCG, Deloitte, and KPMG.</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">ESG</span>
+            <span class="timeline-tag">Financial Modelling</span>
+            <span class="timeline-tag">Bloomberg</span>
+            <span class="timeline-tag">NPV</span>
+            <span class="timeline-tag">MAC Curve</span>
+            <span class="timeline-tag">Strategy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 — Google Build with AI Case Competition -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-category">🏆 Case Competition — Round 2</div>
+          <h3>Google Build with AI Case Competition</h3>
+          <div class="timeline-subtitle">NeuroAdapt · Advanced to Round 2</div>
+          <p>Built NeuroAdapt — an AI exam prep platform that reframes learning as a diagnostic problem. Classifies mistakes as conceptual, procedural, computational, or fatigue-driven to isolate exact prerequisite gaps. Each mechanism is grounded in peer-reviewed cognitive science: Bjork's New Theory of Disuse, Kapur's productive failure (d = 0.6–2.3), and Gollwitzer &amp; Sheeran's implementation-intentions meta-analysis. Defended to Google engineers and case judges.</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Next.js</span>
+            <span class="timeline-tag">Tailwind CSS</span>
+            <span class="timeline-tag">Supabase</span>
+            <span class="timeline-tag">Framer Motion</span>
+            <span class="timeline-tag">AI</span>
+            <span class="timeline-tag">Cognitive Science</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 — Urban Marble -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-category">🏆 Hackathon — 1st Place</div>
+          <h3>DDC × Ignition Hacks 2026</h3>
+          <div class="timeline-subtitle">Urban Marble · First Place Winner</div>
+          <p>Led a 4-person team to build Urban Marble — an AI-powered 3D city exploration platform. Features a mobile-first AR building scanner (live webcam frames + GPS → GPT-4o Vision → architectural metadata), a cinematic story pipeline (GPT-4o-mini narration + DALL-E 3 imagery + Google Street View + OpenAI TTS, all parallelised under 10s), and a 400+ rental listings aggregator across NYC and Toronto. Built on a CesiumJS 3D globe with OSM Buildings geometry.</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Next.js</span>
+            <span class="timeline-tag">TypeScript</span>
+            <span class="timeline-tag">Cesium.js</span>
+            <span class="timeline-tag">GPT-4o-mini</span>
+            <span class="timeline-tag">DALL-E 3</span>
+            <span class="timeline-tag">Framer Motion</span>
+          </div>
+          <div class="timeline-links">
+            <a class="timeline-link" href="https://devpost.com/software/urban-marble" target="_blank" rel="noopener">↗ Devpost</a>
+            <a class="timeline-link" href="https://dd-x-ignition.vercel.app/" target="_blank" rel="noopener">↗ Live Demo</a>
+            <a class="timeline-link" href="https://github.com/pranavishal/DD-x-Ignition" target="_blank" rel="noopener">↗ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 — ICPC -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">2024</div>
+          <div class="timeline-category">🏆 Competition — 1st Place</div>
           <h3>ICPC National Champion</h3>
-          <div class="timeline-role">Qatar National Programming Contest</div>
-          <p>Won the national ICPC championship representing Qatar. Competed in algorithmic problem solving across data structures, graph theory, and dynamic programming.</p>
+          <div class="timeline-subtitle">Qatar Collegiate Programming Contest · 300+ participants · 6,000 QAR prize</div>
+          <p>Won 1st place among 300+ participants in Qatar, scoring equivalent to the 2nd-place university-category team. Advanced to the regional Arab Collegiate Programming Contest (ACPC). Featured in the Gulf Times.</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Competitive Programming</span>
+            <span class="timeline-tag">Algorithms</span>
+            <span class="timeline-tag">C++</span>
+            <span class="timeline-tag">ICPC</span>
+            <span class="timeline-tag">ACPC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 — DPS Hackathon Organiser -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">2024</div>
+          <div class="timeline-category">🧑‍💼 Leadership</div>
+          <h3>Core Organiser — DPS Hackathon</h3>
+          <div class="timeline-subtitle">First Inter-School Hackathon in Qatar · 100+ participants</div>
+          <p>Designed and led the school's inaugural inter-school hackathon with 100+ participants, fostering collaboration and innovation in STEM fields. Brought in Cisco professionals as judges. Featured in the Gulf Times.</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Event Management</span>
+            <span class="timeline-tag">Leadership</span>
+            <span class="timeline-tag">Qatar</span>
+            <span class="timeline-tag">Gulf Times</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 — Alice Programming Competition -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">2024</div>
+          <div class="timeline-category">🚀 Competition — Finalist</div>
+          <h3>Alice3 Game Dev Competition Finalist</h3>
+          <div class="timeline-subtitle">CMU Qatar · Top 80+ teams</div>
+          <p>Reached the final level of the Alice Programming Competition held at Carnegie Mellon University Qatar, competing against 80+ teams. Developed skills in 3D animation and event-driven game programming.</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Alice3</span>
+            <span class="timeline-tag">3D Programming</span>
+            <span class="timeline-tag">CMU Qatar</span>
+            <span class="timeline-tag">Event-Driven</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 — Zonal Computing Olympiad -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">2024</div>
+          <div class="timeline-category">🧠 Olympiad</div>
+          <h3>Zonal Computing Olympiad (ZCO)</h3>
+          <div class="timeline-subtitle">Indian Computing Olympiad — Top 100</div>
+          <p>Obtained a top-100 finish in the first stage of the Indian Computing Olympiad, qualifying through the Zonal Computing Olympiad round.</p>
           <div class="timeline-tags">
             <span class="timeline-tag">Competitive Programming</span>
             <span class="timeline-tag">Algorithms</span>
@@ -267,31 +389,137 @@
         </div>
       </div>
 
+      <!-- 10 — Cisco Python Certifications -->
       <div class="timeline-item reveal">
-        <div class="timeline-date">Summer 2024</div>
-        <div class="timeline-connector"><div class="timeline-dot"></div></div>
-        <div class="timeline-content">
-          <h3>Self-Directed Projects</h3>
-          <div class="timeline-role">Personal Work</div>
-          <p>Built Smart Dots (genetic algorithm simulation) and Connect Four AI with minimax + alpha-beta pruning at depth 8.</p>
+        <div class="timeline-card">
+          <div class="timeline-date">2023–24</div>
+          <div class="timeline-category">📜 Certification</div>
+          <h3>Cisco Python Certifications</h3>
+          <div class="timeline-subtitle">Python Essentials 1 &amp; 2 · Skills for All</div>
+          <p>Completed Cisco's official Python Programming certifications (Python Essentials 1 and 2) through the Skills for All programme.</p>
           <div class="timeline-tags">
-            <span class="timeline-tag">C</span>
-            <span class="timeline-tag">JavaScript</span>
-            <span class="timeline-tag">Algorithms</span>
+            <span class="timeline-tag">Python</span>
+            <span class="timeline-tag">Cisco</span>
+            <span class="timeline-tag">Certification</span>
           </div>
         </div>
       </div>
 
+      <!-- 11 — Academic Olympiads -->
       <div class="timeline-item reveal">
-        <div class="timeline-date">2023</div>
-        <div class="timeline-connector"><div class="timeline-dot"></div></div>
-        <div class="timeline-content">
+        <div class="timeline-card">
+          <div class="timeline-date">2022–2024</div>
+          <div class="timeline-category">🧠 Olympiads</div>
+          <h3>National &amp; International Science/Math Olympiads</h3>
+          <div class="timeline-subtitle">NSO · IOEL · IEO · IMO — multiple top placements</div>
+          <p>IMO (Gr. 11): School Rank 2, Gulf Rank 6, International Rank 229 — Zonal Distinction. NSO (2022-23): International Rank 62, Zonal Rank 4, Regional Rank 3. IOEL: International Rank 54, Regional Rank 3, Zonal Rank 4. IEO (2023-24): Zonal Rank 9. Scholar Award in both Grade X (2022-23) and Grade XI (2023-24). A1 in all 5 core subjects, Grade X (2022-23).</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">NSO</span>
+            <span class="timeline-tag">IOEL</span>
+            <span class="timeline-tag">IEO</span>
+            <span class="timeline-tag">IMO</span>
+            <span class="timeline-tag">Mathematics</span>
+            <span class="timeline-tag">Science</span>
+            <span class="timeline-tag">Scholar Award</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 — Karate Black Belt -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">2023</div>
+          <div class="timeline-category">🥋 Sports</div>
+          <h3>Shotokan Karate — Black Belt</h3>
+          <div class="timeline-subtitle">WKF-recognised · International Olympic Committee recognised dojo</div>
+          <p>Earned a Diploma in Shotokan Karate at Black Belt level through a WKF-recognised training programme. Trained in WKF championship camps. Placed 2nd in Kumite and 2nd in Kata at the Inter-Dojo Championship (2018).</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Karate</span>
+            <span class="timeline-tag">Shotokan</span>
+            <span class="timeline-tag">WKF</span>
+            <span class="timeline-tag">Black Belt</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13 — Trinity College London -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">2021–2024</div>
+          <div class="timeline-category">🎵 Music</div>
+          <h3>Trinity College London — Electronic Keyboard</h3>
+          <div class="timeline-subtitle">Certificates of Distinction · Initial, Grade 1, Grade 2</div>
+          <p>Earned Certificates of Distinction in Initial, Grade 1, and Grade 2 Electronic Keyboard exams from Trinity College London. Performed at the Annual Day Function of Kalakshetra Music Academy, Qatar (2021). Won 1st place in the Inter-House Group Song Competition (2024), and 2nd place in both 2022-23 and 2023-24. Played for the School Choir and School Farewell.</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Trinity College London</span>
+            <span class="timeline-tag">Keyboard</span>
+            <span class="timeline-tag">Performance</span>
+            <span class="timeline-tag">Distinction</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14 — Qatar School Debate League -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">2023</div>
+          <div class="timeline-category">🎙️ Debate</div>
+          <h3>Qatar School Debate League</h3>
+          <div class="timeline-subtitle">Top 10 Teams Nationally</div>
+          <p>Placed in the top 10 teams at the Qatar School Debate League. Also taught debating skills to junior students across sections.</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Debate</span>
+            <span class="timeline-tag">Public Speaking</span>
+            <span class="timeline-tag">Qatar</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15 — Started Programming -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">2023</div>
+          <div class="timeline-category">💻 Origin</div>
           <h3>Started Programming</h3>
-          <div class="timeline-role">Self-Taught</div>
-          <p>Fell into Python through curiosity about how things work. Built small automation scripts, then couldn't stop.</p>
+          <div class="timeline-subtitle">Self-Taught</div>
+          <p>Fell into Python through curiosity about how things work. Built small automation scripts and tools — then couldn't stop.</p>
           <div class="timeline-tags">
             <span class="timeline-tag">Python</span>
             <span class="timeline-tag">Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16 — Community Service -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">2022–2023</div>
+          <div class="timeline-category">🤝 Community</div>
+          <h3>Volunteer Service — Qatar</h3>
+          <div class="timeline-subtitle">Medical Camp &amp; Environmental Walkathon</div>
+          <p>Volunteered at the 19th Asian Medical Camp held by the Center for the Indian Community in Qatar (under the Aegis of the Embassy of India, 2023). Participated in the MoveQTR Walkathon and Cleanup (2022).</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Volunteering</span>
+            <span class="timeline-tag">Qatar</span>
+            <span class="timeline-tag">Community</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17 — Early STEM Olympiads -->
+      <div class="timeline-item reveal">
+        <div class="timeline-card">
+          <div class="timeline-date">Pre-2022</div>
+          <div class="timeline-category">🧠 Olympiads</div>
+          <h3>Early STEM Olympiad Medals</h3>
+          <div class="timeline-subtitle">Silverzone &amp; SOF · Pre-Grade 9</div>
+          <p>Won multiple medals in STEM olympiads run by Silverzone and Science Olympiad Foundation (SOF) prior to Grade 9.</p>
+          <div class="timeline-tags">
+            <span class="timeline-tag">STEM</span>
+            <span class="timeline-tag">Silverzone</span>
+            <span class="timeline-tag">SOF</span>
+            <span class="timeline-tag">Mathematics</span>
+            <span class="timeline-tag">Science</span>
           </div>
         </div>
       </div>
@@ -336,46 +564,26 @@
 
       <div class="project-card reveal" data-index="1">
         <div class="project-card-header">
-          <span class="project-title">ReloSense</span>
-          <a class="project-link" href="https://github.com/noice232/relosense" target="_blank" rel="noopener" aria-label="ReloSense GitHub">↗</a>
+          <span class="project-title">Urban Marble</span>
+          <a class="project-link" href="https://github.com/pranavishal/DD-x-Ignition" target="_blank" rel="noopener" aria-label="Urban Marble GitHub">↗</a>
         </div>
         <p class="project-desc">
-          3D city relocation intelligence platform. Ingests neighbourhood data and
-          renders real-time heatmap overlays on a CesiumJS globe. Includes a
-          scoring layer for livability metrics and a Vastu Truth Panel. Spatial
-          Lead — responsible for the CesiumJS map, heatmap logic, and 3D overlay
-          pipeline. Built at Ignition Hacks 2025.
+          1st place at DDC × Ignition Hacks 2026. AI-powered 3D city exploration
+          platform with AR building scanner (GPT-4o Vision), cinematic story
+          pipeline (GPT-4o-mini + DALL-E 3 + TTS, parallelised under 10s), and a
+          400+ rental listings aggregator. Built on a CesiumJS 3D globe with OSM
+          Buildings geometry.
         </p>
         <div class="project-tags">
-          <span class="tag">CesiumJS</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">Cesium.js</span>
+          <span class="tag">GPT-4o-mini</span>
+          <span class="tag">DALL-E 3</span>
           <span class="tag">TypeScript</span>
-          <span class="tag">Python</span>
-          <span class="tag">Heatmaps</span>
-          <span class="tag">3D</span>
         </div>
       </div>
 
       <div class="project-card reveal" data-index="2">
-        <div class="project-card-header">
-          <span class="project-title">Urban Marble</span>
-          <a class="project-link" href="https://github.com/noice232/urban-marble" target="_blank" rel="noopener" aria-label="Urban Marble GitHub">↗</a>
-        </div>
-        <p class="project-desc">
-          AI-powered 3D city exploration tool. Uses GPT-4o-mini for context-aware
-          city narration, DALL-E 3 for scene generation, Cesium.js for the 3D
-          globe, and Google Places for real POI data. Users can fly through cities
-          and get AI-generated insights about any location they land on.
-        </p>
-        <div class="project-tags">
-          <span class="tag">GPT-4o-mini</span>
-          <span class="tag">DALL-E 3</span>
-          <span class="tag">Cesium.js</span>
-          <span class="tag">Google Places</span>
-          <span class="tag">TypeScript</span>
-        </div>
-      </div>
-
-      <div class="project-card reveal" data-index="3">
         <div class="project-card-header">
           <span class="project-title">Connect Four AI</span>
           <a class="project-link" href="https://github.com/noice232/connect-four" target="_blank" rel="noopener" aria-label="Connect Four AI GitHub">↗</a>
@@ -391,7 +599,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-index="4">
+      <div class="project-card reveal" data-index="3">
         <div class="project-card-header">
           <span class="project-title">Health Data Visualizer</span>
           <a class="project-link" href="https://github.com/noice232/health-data-visualizer" target="_blank" rel="noopener" aria-label="Health Data Visualizer GitHub">↗</a>
@@ -408,7 +616,7 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-index="5">
+      <div class="project-card reveal" data-index="4">
         <div class="project-card-header">
           <span class="project-title">Smart Dots</span>
           <a class="project-link" href="https://github.com/noice232/smart-dots" target="_blank" rel="noopener" aria-label="Smart Dots GitHub">↗</a>
