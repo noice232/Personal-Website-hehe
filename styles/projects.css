@@ -26,7 +26,8 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
     "feat feat card2"
-    "card3 card4 .";
+    "card3 card4 card5"
+    "card6 card7 .";
   gap: 20px;
 }
 
@@ -129,6 +130,9 @@
 .project-card[data-index="1"] { grid-area: card2; }
 .project-card[data-index="2"] { grid-area: card3; }
 .project-card[data-index="3"] { grid-area: card4; }
+.project-card[data-index="4"] { grid-area: card5; }
+.project-card[data-index="5"] { grid-area: card6; }
+.project-card[data-index="6"] { grid-area: card7; }
 
 /* ── Card internals ──────────────────────────────────────── */
 .project-card-header {
@@ -216,6 +220,33 @@
   border-color: rgba(255, 69, 0, 0.3);
 }
 
+/* Multi-link row (Urban Marble, etc.) */
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.project-link-pill {
+  font-family: var(--font-main);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+  border: 1px solid var(--color-border-accent);
+  border-radius: var(--border-radius-pill);
+  padding: 3px 10px;
+  transition: background 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.project-link-pill:hover {
+  background: rgba(255, 69, 0, 0.08);
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 900px) {
   #projects-grid {
@@ -223,7 +254,8 @@
     grid-template-areas:
       "feat feat"
       "card2 card3"
-      "card4 .";
+      "card4 card5"
+      "card6 card7";
   }
 }
 
@@ -236,7 +268,10 @@
       "feat"
       "card2"
       "card3"
-      "card4";
+      "card4"
+      "card5"
+      "card6"
+      "card7";
   }
 
   .project-desc { max-height: none; }

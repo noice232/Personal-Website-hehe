@@ -538,58 +538,121 @@
 
     <div id="projects-grid" class="stagger-grid">
 
-      <!-- Featured card -->
+      <!-- Card 1 — PulmoScan (featured) -->
       <div class="project-card project-featured reveal" data-index="0">
-        <div class="featured-badge">⭐ Featured · Hack Canada 2026 — Build with AI Winner</div>
+        <div class="featured-badge">⭐ Featured · Hack Canada 2026 Winner · Most Technically Complex Hack Finalist</div>
         <div class="project-card-header">
           <span class="project-title">PulmoScan</span>
-          <a class="project-link" href="https://github.com/noice232/pulmo-scan" target="_blank" rel="noopener" aria-label="PulmoScan GitHub">↗</a>
+          <a class="project-link" href="https://github.com/noice232/pulmoscan" target="_blank" rel="noopener" aria-label="PulmoScan GitHub">↗</a>
         </div>
         <p class="project-desc">
-          AI-powered lung CT scan analysis tool that detects anomalies using
-          EfficientNet-B0 fine-tuned on 30,000 slices, with GradCAM localization
-          and 3D VTK.js rendering. Built at Hack Canada 2026 — won the Build with
-          AI track. Achieves 91% accuracy with annotated results returned in under
-          2 seconds.
+          ML-powered lung disease detection and 3D visualisation platform built
+          from raw DICOM CT scans. Engineered a dual-track pathology pipeline
+          combining Otsu thresholding with a fine-tuned EfficientNet-B0 classifier
+          and Grad-CAM heatmaps. Paired with an interactive VTK.js 3D lung viewer
+          using marching cubes surface extraction. Named finalist for Most
+          Technically Complex Hack and advancing to Google's startup funding track.
         </p>
         <div class="project-tags">
           <span class="tag">Python</span>
-          <span class="tag">FastAPI</span>
           <span class="tag">PyTorch</span>
+          <span class="tag">TypeScript</span>
           <span class="tag">React</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">VTK.js</span>
+          <span class="tag">Three.js</span>
+          <span class="tag">FastAPI</span>
           <span class="tag">EfficientNet</span>
           <span class="tag">GradCAM</span>
         </div>
       </div>
 
+      <!-- Card 2 — Urban Marble -->
       <div class="project-card reveal" data-index="1">
+        <div class="featured-badge">⭐ DDC × Ignition Hacks 2026 — 1st Place</div>
         <div class="project-card-header">
           <span class="project-title">Urban Marble</span>
-          <a class="project-link" href="https://github.com/pranavishal/DD-x-Ignition" target="_blank" rel="noopener" aria-label="Urban Marble GitHub">↗</a>
         </div>
         <p class="project-desc">
-          1st place at DDC × Ignition Hacks 2026. AI-powered 3D city exploration
-          platform with AR building scanner (GPT-4o Vision), cinematic story
-          pipeline (GPT-4o-mini + DALL-E 3 + TTS, parallelised under 10s), and a
-          400+ rental listings aggregator. Built on a CesiumJS 3D globe with OSM
-          Buildings geometry.
+          AI-powered 3D city exploration platform built in under 8 hours.
+          AR building scanner (webcam + GPS → GPT-4o Vision → architectural
+          metadata), cinematic story pipeline (GPT-4o-mini + DALL-E 3 + TTS,
+          parallelised under 10s), and a 400+ rental listings aggregator across
+          NYC and Toronto. CesiumJS 3D globe with OSM Buildings geometry. Zero
+          merge conflicts across 4 engineers via a shared JSON schema.
         </p>
         <div class="project-tags">
           <span class="tag">Next.js</span>
+          <span class="tag">TypeScript</span>
           <span class="tag">Cesium.js</span>
           <span class="tag">GPT-4o-mini</span>
           <span class="tag">DALL-E 3</span>
-          <span class="tag">TypeScript</span>
+          <span class="tag">Framer Motion</span>
+        </div>
+        <div class="project-links">
+          <a class="project-link-pill" href="https://devpost.com/software/urban-marble" target="_blank" rel="noopener">↗ Devpost</a>
+          <a class="project-link-pill" href="https://dd-x-ignition.vercel.app/" target="_blank" rel="noopener">↗ Live Demo</a>
+          <a class="project-link-pill" href="https://github.com/pranavishal/DD-x-Ignition" target="_blank" rel="noopener">↗ GitHub</a>
         </div>
       </div>
 
+      <!-- Card 3 — NeuroAdapt -->
       <div class="project-card reveal" data-index="2">
+        <div class="featured-badge">Google Build with AI 2026 · Advanced to Round 2</div>
+        <div class="project-card-header">
+          <span class="project-title">NeuroAdapt</span>
+          <a class="project-link" href="https://github.com/noice232/neuroadapt" target="_blank" rel="noopener" aria-label="NeuroAdapt GitHub">↗</a>
+        </div>
+        <p class="project-desc">
+          AI exam prep platform that reframes learning as a diagnostic problem.
+          Classifies mistakes as conceptual, procedural, computational, or
+          fatigue-driven to isolate exact prerequisite gaps. Grounded in
+          Bjork's New Theory of Disuse, Kapur's productive failure (d = 0.6–2.3),
+          and Gollwitzer &amp; Sheeran's implementation-intentions meta-analysis.
+          Defended to Google engineers and case judges.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">Framer Motion</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">OpenAI SDK</span>
+        </div>
+      </div>
+
+      <!-- Card 4 — UW Management Consulting -->
+      <div class="project-card reveal" data-index="3">
+        <div class="featured-badge">UW Management Consulting 2026 · Semifinalist · Top 8 of 80 teams</div>
+        <div class="project-card-header">
+          <span class="project-title">Saudi Aramco ESG Framework</span>
+        </div>
+        <p class="project-desc">
+          $1B ESG capital-allocation framework for Saudi Aramco modelling
+          ~1.5 MtCO₂e/year verified abatement within 36 months at a ~16%
+          portfolio IRR and ~$88/tCO₂e marginal abatement cost. Bloomberg
+          Terminal research, MAC curve with 10-year NPV sensitivity benchmarked
+          against EU ETS. CFO-led stage-gate governance. Defended to judges from
+          McKinsey, BCG, Deloitte, and KPMG.
+        </p>
+        <div class="project-tags">
+          <span class="tag">ESG</span>
+          <span class="tag">Financial Modelling</span>
+          <span class="tag">Bloomberg</span>
+          <span class="tag">NPV</span>
+          <span class="tag">MAC Curve</span>
+          <span class="tag">Carbon Pricing</span>
+        </div>
+      </div>
+
+      <!-- Card 5 — Connect Four AI -->
+      <div class="project-card reveal" data-index="4">
         <div class="project-card-header">
           <span class="project-title">Connect Four AI</span>
           <a class="project-link" href="https://github.com/noice232/connect-four" target="_blank" rel="noopener" aria-label="Connect Four AI GitHub">↗</a>
         </div>
         <p class="project-desc">
-          A Connect Four engine with minimax and alpha-beta pruning.
+          Connect Four engine with minimax and alpha-beta pruning.
           Plays optimally at depth 8 in under 50ms.
         </p>
         <div class="project-tags">
@@ -599,7 +662,8 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-index="3">
+      <!-- Card 6 — Health Data Visualizer -->
+      <div class="project-card reveal" data-index="5">
         <div class="project-card-header">
           <span class="project-title">Health Data Visualizer</span>
           <a class="project-link" href="https://github.com/noice232/health-data-visualizer" target="_blank" rel="noopener" aria-label="Health Data Visualizer GitHub">↗</a>
@@ -616,7 +680,8 @@
         </div>
       </div>
 
-      <div class="project-card reveal" data-index="4">
+      <!-- Card 7 — Smart Dots -->
+      <div class="project-card reveal" data-index="6">
         <div class="project-card-header">
           <span class="project-title">Smart Dots</span>
           <a class="project-link" href="https://github.com/noice232/smart-dots" target="_blank" rel="noopener" aria-label="Smart Dots GitHub">↗</a>
@@ -650,58 +715,106 @@
 
     <div id="skills-cloud" class="reveal">
 
-      <!-- Expert -->
+      <!-- Tier 1 — Reach for first -->
       <span class="skill-tag" data-level="expert">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
         Python
+      </span>
+      <span class="skill-tag" data-level="expert">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
+        TypeScript
       </span>
       <span class="skill-tag" data-level="expert">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" />
         C
       </span>
       <span class="skill-tag" data-level="expert">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
-        TypeScript
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" />
+        C++
       </span>
-
-      <!-- Proficient -->
-      <span class="skill-tag" data-level="proficient">
+      <span class="skill-tag" data-level="expert">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
         JavaScript
       </span>
-      <span class="skill-tag" data-level="proficient">
+      <span class="skill-tag" data-level="expert">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
         React
       </span>
-      <span class="skill-tag" data-level="proficient">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" />
-        FastAPI
+      <span class="skill-tag" data-level="expert">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" />
+        Next.js
       </span>
-      <span class="skill-tag" data-level="proficient">
+      <span class="skill-tag" data-level="expert">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" />
         PyTorch
       </span>
+      <span class="skill-tag" data-level="expert">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" alt="FastAPI" />
+        FastAPI
+      </span>
+
+      <!-- Tier 2 — Proficient -->
       <span class="skill-tag" data-level="proficient">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
         Git
       </span>
       <span class="skill-tag" data-level="proficient">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
-        Node.js
-      </span>
-
-      <!-- Familiar -->
-      <span class="skill-tag" data-level="familiar">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
         Docker
       </span>
-      <span class="skill-tag" data-level="familiar">
+      <span class="skill-tag" data-level="proficient">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
+        Node.js
+      </span>
+      <span class="skill-tag" data-level="proficient">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS" />
+        Tailwind CSS
+      </span>
+      <span class="skill-tag" data-level="proficient">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" alt="Three.js" />
+        Three.js
+      </span>
+      <span class="skill-tag" data-level="proficient">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" />
+        Supabase
+      </span>
+      <span class="skill-tag" data-level="proficient">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" />
         PostgreSQL
       </span>
-      <span class="skill-tag" data-level="familiar">
+      <span class="skill-tag" data-level="proficient">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
         Linux
+      </span>
+      <span class="skill-tag" data-level="proficient">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg" alt="NumPy" />
+        NumPy
+      </span>
+
+      <!-- Tier 3 — Familiar -->
+      <span class="skill-tag" data-level="familiar">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R" />
+        R
+      </span>
+      <span class="skill-tag" data-level="familiar">
+        <span class="skill-emoji">🌍</span>
+        Cesium.js
+      </span>
+      <span class="skill-tag" data-level="familiar">
+        <span class="skill-emoji">🫁</span>
+        VTK.js
+      </span>
+      <span class="skill-tag" data-level="familiar">
+        <span class="skill-emoji">✨</span>
+        Framer Motion
+      </span>
+      <span class="skill-tag" data-level="familiar">
+        <span class="skill-emoji">🤖</span>
+        OpenAI SDK
+      </span>
+      <span class="skill-tag" data-level="familiar">
+        <span class="skill-emoji">📊</span>
+        Matplotlib
       </span>
       <span class="skill-tag" data-level="familiar">
         <span class="skill-emoji">🧠</span>
@@ -709,11 +822,19 @@
       </span>
       <span class="skill-tag" data-level="familiar">
         <span class="skill-emoji">⚙️</span>
-        Data Structures
+        Data Structures &amp; Algorithms
       </span>
       <span class="skill-tag" data-level="familiar">
         <span class="skill-emoji">🌐</span>
         REST APIs
+      </span>
+      <span class="skill-tag" data-level="familiar">
+        <span class="skill-emoji">💹</span>
+        Financial Modelling
+      </span>
+      <span class="skill-tag" data-level="familiar">
+        <span class="skill-emoji">🗺</span>
+        Geospatial / 3D
       </span>
 
     </div>
