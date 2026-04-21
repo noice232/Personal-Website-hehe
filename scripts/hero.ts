@@ -17,6 +17,7 @@
 import { showNav }        from './nav';
 import './scroll';
 import './cursor';
+import './wheel-nav';
 import { initAllEffects, initTypewriter } from './effects';
 import { initAirlock } from './airlock';
 
