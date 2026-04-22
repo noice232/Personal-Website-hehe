@@ -65,6 +65,8 @@ function showSection(targetId: string): void {
 export function triggerAirlockTransition(targetId: string, label: string): void {
   if (isTransitioning) return;
 
+  window.dispatchEvent(new CustomEvent('section-change', { detail: { id: targetId } }));
+
   // Reduced-motion fallback
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     showSection(targetId);

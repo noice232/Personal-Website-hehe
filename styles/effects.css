@@ -74,31 +74,3 @@
   will-change: width;
 }
 
-/* ── Sticky side section label ───────────────────────────── */
-#section-label-side {
-  position: fixed;
-  left: 2.2vw;
-  top: 50%;
-  transform: translateY(-50%) rotate(-90deg);
-  transform-origin: center center;
-  font-family: var(--font-main);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-out), color 0.3s ease;
-  z-index: 60;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-#section-label-side.visible {
-  opacity: 0.55;
-}
-
-/* Only show on wide screens */
-@media (max-width: 1200px) {
-  #section-label-side { display: none; }
-}

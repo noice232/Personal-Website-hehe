@@ -131,12 +131,12 @@ export function initScrambleObserver(): void {
 
 // ── 3D card tilt ────────────────────────────────────────────
 export function initCardTilt(): void {
-  const MAX_TILT = 8; // degrees
+  const MAX_TILT = 8;
 
   document.querySelectorAll<HTMLElement>('.project-card').forEach((card) => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width  - 0.5; // -0.5..0.5
+      const x = (e.clientX - rect.left) / rect.width  - 0.5;
       const y = (e.clientY - rect.top)  / rect.height - 0.5;
       card.style.transform =
         `perspective(800px) translateY(-4px) rotateX(${y * -MAX_TILT}deg) rotateY(${x * MAX_TILT}deg)`;
@@ -144,6 +144,22 @@ export function initCardTilt(): void {
 
     card.addEventListener('mouseleave', () => {
       card.style.transform = '';
+    });
+  });
+
+  const SKILL_TILT = 35;
+
+  document.querySelectorAll<HTMLElement>('.skill-tag').forEach((tag) => {
+    tag.addEventListener('mousemove', (e) => {
+      const rect = tag.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width  - 0.5;
+      const y = (e.clientY - rect.top)  / rect.height - 0.5;
+      tag.style.transform =
+        `perspective(120px) translateY(-8px) rotateX(${y * -SKILL_TILT}deg) rotateY(${x * SKILL_TILT}deg) scale(1.08)`;
+    });
+
+    tag.addEventListener('mouseleave', () => {
+      tag.style.transform = '';
     });
   });
 }
