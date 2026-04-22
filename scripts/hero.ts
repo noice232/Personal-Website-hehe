@@ -43,135 +43,103 @@ async function runHeroAnimation(): Promise<void> {
 }
 
 function settleHero(): void {
-  // 1. Slide hero text center → left, shrinking font
-  heroText.style.transition = [
-    'left 0.8s var(--ease-out)',
-    'top 0.8s var(--ease-out)',
-    'transform 0.8s var(--ease-out)',
-    'font-size 0.8s var(--ease-out)',
-  ].join(', ');
+  const isMobile = window.innerWidth <= 900;
 
-  requestAnimationFrame(() => {
+  if (!isMobile) {
+    // 1. Slide hero text center → left, shrinking font
+    heroText.style.transition = [
+      'left 0.8s var(--ease-out)',
+      'top 0.8s var(--ease-out)',
+      'transform 0.8s var(--ease-out)',
+      'font-size 0.8s var(--ease-out)',
+    ].join(', ');
+
     requestAnimationFrame(() => {
-      heroText.style.left      = '10vw';
-      heroText.style.top       = '50%';
-      heroText.style.transform = 'translateY(-50%)';
-      heroText.style.fontSize  = 'clamp(1.8rem, 3.5vw, 3rem)';
+      requestAnimationFrame(() => {
+        heroText.style.left      = '10vw';
+        heroText.style.top       = '50%';
+        heroText.style.transform = 'translateY(-50%)';
+        heroText.style.fontSize  = 'clamp(1.8rem, 3.5vw, 3rem)';
+      });
     });
-  });
 
-  // 2. Photo slides in
-  setTimeout(() => heroRight.classList.add('slide-in'), 400);
+    // 2. Photo slides in
+    setTimeout(() => heroRight.classList.add('slide-in'), 400);
 
-  // 3. Position tagline/buttons below text after transition
-  setTimeout(() => {
-    const textRect = heroText.getBoundingClientRect();
-    const heroRect = heroEl.getBoundingClientRect();
-    heroLeftExtras.style.top = `${textRect.bottom - heroRect.top + 20}px`;
-
-    if (window.innerWidth <= 900) {
-      heroLeftExtras.style.left      = '50%';
-      heroLeftExtras.style.transform = 'translateX(-50%)';
-    }
-
-    heroLeftExtras.classList.add('active');
-  }, 820);
+    // 3. Position tagline/buttons below text after transition
+    setTimeout(() => {
+      const textRect = heroText.getBoundingClientRect();
+      const heroRect = heroEl.getBoundingClientRect();
+      heroLeftExtras.style.top = `${textRect.bottom - heroRect.top + 20}px`;
+      heroLeftExtras.classList.add('active');
+    }, 820);
+  }
+  // On mobile: CSS handles layout, content already visible via !important overrides
 
   // 4. Navbar
-  setTimeout(() => showNav(), 900);
+  setTimeout(() => showNav(), isMobile ? 300 : 900);
 
   // 5. Slideshow + badge
   setTimeout(() => {
     initSlideshow();
-    if (heroBadge) heroBadge.classList.add('visible');
-  }, 1200);
+    if (heroBadge && !isMobile) heroBadge.classList.add('visible');
+  }, isMobile ? 500 : 1200);
 }
 
-// ── Slideshow ─────────────────────────────────────────────────
+// ── Slideshow — infinite peek carousel ───────────────────────
 
 function initSlideshow(): void {
-  const slides = Array.from(
-    document.querySelectorAll<HTMLImageElement>('#hero-slideshow .slide')
-  );
+  const track = document.getElementById('hero-slide-track') as HTMLElement;
+  if (!track) return;
 
-  if (slides.length <= 1) return;
+  const origSlides = Array.from(track.querySelectorAll<HTMLElement>('.slide'));
+  if (origSlides.length <= 1) return;
 
-  let current  = 0;
-  let paused   = false;
-  let intervalId: ReturnType<typeof setInterval>;
+  const N = origSlides.length;
+  const GAP = 16; // must match CSS gap
+
+  // Append clones so the loop can seamlessly wrap
+  origSlides.forEach((s) => {
+    const clone = s.cloneNode(true) as HTMLElement;
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+  });
+
+  let idx = 0;
+
+  function calcOffset(i: number): number {
+    const allSlides = track.querySelectorAll<HTMLElement>('.slide');
+    const slideW = (allSlides[0] as HTMLElement).offsetWidth;
+    const cW = (track.parentElement as HTMLElement).offsetWidth;
+    return -i * (slideW + GAP) + (cW - slideW) / 2;
+  }
+
+  // Set initial position (no animation)
+  track.style.transition = 'none';
+  track.style.transform = `translateX(${calcOffset(0)}px)`;
+
+  let busy = false;
 
   function advance(): void {
-    if (paused) return;
-    const prev = current;
-    current = (current + 1) % slides.length;
+    if (busy) return;
+    busy = true;
+    idx++;
+    track.style.transition = 'transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    track.style.transform = `translateX(${calcOffset(idx)}px)`;
 
-    // Old slide fades out to the left
-    slides[prev].classList.add('slide-exiting');
-    slides[prev].classList.remove('slide-active');
-    // New slide fades in from the right (CSS default: translateX(28px) → translateX(0))
-    slides[current].classList.add('slide-active');
-
-    // After transition, snap exited slide back to right-side default
     setTimeout(() => {
-      const el = slides[prev];
-      el.style.transitionDuration = '0ms';
-      el.classList.remove('slide-exiting');
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => { el.style.transitionDuration = ''; });
-      });
-    }, 870);
-  }
-
-  function prev(): void {
-    if (paused) return;
-    const old = current;
-    current = (current - 1 + slides.length) % slides.length;
-
-    // Old slide fades out to the right (just remove active — CSS default is translateX(28px) opacity 0)
-    slides[old].classList.remove('slide-active');
-
-    // New slide enters from the left: override default starting position to -28px
-    slides[current].style.transition = 'none';
-    slides[current].style.transform = 'translateX(-28px)';
-    slides[current].style.opacity = '0';
-
-    requestAnimationFrame(() => {
-      slides[current].getBoundingClientRect(); // force reflow so browser commits the above
-      requestAnimationFrame(() => {
-        slides[current].style.transition = '';
-        slides[current].style.transform = '';
-        slides[current].style.opacity = '';
-        slides[current].classList.add('slide-active');
-      });
-    });
-  }
-
-  intervalId = setInterval(advance, 3500);
-
-  // Pause on hover
-  const container = document.getElementById('hero-slideshow');
-  if (container) {
-    container.addEventListener('mouseenter', () => { paused = true; });
-    container.addEventListener('mouseleave', () => { paused = false; });
-  }
-
-  // Swipe gestures (mobile)
-  let touchStartX = 0;
-  const wrapper = document.getElementById('hero-image-wrapper');
-  if (wrapper) {
-    wrapper.addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
-
-    wrapper.addEventListener('touchend', (e) => {
-      const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 40) {
-        clearInterval(intervalId);
-        if (diff > 0) advance(); else prev();
-        intervalId = setInterval(advance, 3500);
+      // When we've shown all clones, snap back silently to the equivalent real slide
+      if (idx >= N) {
+        idx -= N;
+        track.style.transition = 'none';
+        track.style.transform = `translateX(${calcOffset(idx)}px)`;
       }
-    }, { passive: true });
+      busy = false;
+    }, 820);
   }
+
+  // Auto-scroll: start 1s after this function is called
+  setTimeout(() => setInterval(advance, 3500), 1000);
 }
 
 // ── Bootstrap ─────────────────────────────────────────────────

@@ -3,12 +3,12 @@
    ============================================================ */
 
 #skills {
-  padding: 0 10vw;
+  padding: max(60px, 8vh) 10vw max(60px, 6vh);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-height: 100%;
+  overflow-y: auto;
 }
 
 #skills .section-label { margin-bottom: 16px; }
@@ -98,6 +98,6 @@
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
-  #skills { padding: 0 6vw; }
+  #skills { padding: 70px 6vw 80px; }
   #skills-cloud { gap: 9px; }
 }
