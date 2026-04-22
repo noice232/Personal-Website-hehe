@@ -2,36 +2,29 @@
  * hero.ts — Entry point bundled by esbuild.
  *
  * Timeline:
- *   t=0       : gradient mesh visible, all text opacity 0
- *   t=300ms   : "Hi," fades up
- *   t=900ms   : "I'm" fades up
- *   t=1500ms  : "Yash Sah" fades up
- *   t=3000ms  : settle — text slides left, gradient dims
- *   t=3400ms  : photo slides in
- *   t=3820ms  : tagline + buttons positioned + fade in
- *   t=3900ms  : navbar appears
- *   t=4200ms  : slideshow starts, badge appears
- *   t=4400ms  : typewriter starts, glisten animation starts
+ *   t=0       : all text opacity 0
+ *   t=300ms   : hero words fade in as a single block
+ *   t=1500ms  : settle — text slides left, photo slides in
+ *   t=2300ms  : tagline + buttons positioned + fade in
+ *   t=2400ms  : navbar appears
+ *   t=2700ms  : slideshow starts, badge appears
  */
 
 import { showNav }        from './nav';
 import './scroll';
 import './cursor';
 import './wheel-nav';
-import { initAllEffects, initTypewriter } from './effects';
+import { initAllEffects } from './effects';
 import { initAirlock } from './airlock';
 
 // ── Element refs ─────────────────────────────────────────────
 
-const heroEl         = document.getElementById('hero')              as HTMLElement;
-const heroText       = document.getElementById('hero-text')         as HTMLElement;
-const wordHi         = document.getElementById('word-hi')           as HTMLElement;
-const wordIm         = document.getElementById('word-im')           as HTMLElement;
-const wordYash       = document.getElementById('word-yash')         as HTMLElement;
-const heroGradient   = document.getElementById('hero-gradient')     as HTMLElement;
-const heroRight      = document.getElementById('hero-right')        as HTMLElement;
-const heroLeftExtras = document.getElementById('hero-left-extras')  as HTMLElement;
-const heroBadge      = document.getElementById('hero-image-badge')  as HTMLElement | null;
+const heroEl         = document.getElementById('hero')             as HTMLElement;
+const heroText       = document.getElementById('hero-text')        as HTMLElement;
+const heroWords      = document.getElementById('hero-words')       as HTMLElement;
+const heroRight      = document.getElementById('hero-right')       as HTMLElement;
+const heroLeftExtras = document.getElementById('hero-left-extras') as HTMLElement;
+const heroBadge      = document.getElementById('hero-image-badge') as HTMLElement | null;
 
 // ── Helpers ──────────────────────────────────────────────────
 
@@ -43,15 +36,9 @@ function delay(ms: number): Promise<void> {
 
 async function runHeroAnimation(): Promise<void> {
   await delay(300);
-  wordHi.classList.add('word-visible');
+  heroWords.style.animation = 'fadeIn 0.9s var(--ease-out) forwards';
 
-  await delay(600);
-  wordIm.classList.add('word-visible');
-
-  await delay(600);
-  wordYash.classList.add('word-visible');
-
-  await delay(1500);
+  await delay(1200);
   settleHero();
 }
 
@@ -73,13 +60,10 @@ function settleHero(): void {
     });
   });
 
-  // 2. Dim gradient mesh
-  setTimeout(() => heroGradient.classList.add('settling'), 100);
-
-  // 3. Photo slides in
+  // 2. Photo slides in
   setTimeout(() => heroRight.classList.add('slide-in'), 400);
 
-  // 4. Position tagline/buttons below text after transition
+  // 3. Position tagline/buttons below text after transition
   setTimeout(() => {
     const textRect = heroText.getBoundingClientRect();
     const heroRect = heroEl.getBoundingClientRect();
@@ -93,24 +77,14 @@ function settleHero(): void {
     heroLeftExtras.classList.add('active');
   }, 820);
 
-  // 5. Navbar
+  // 4. Navbar
   setTimeout(() => showNav(), 900);
 
-  // 6. Slideshow + badge
+  // 5. Slideshow + badge
   setTimeout(() => {
     initSlideshow();
     if (heroBadge) heroBadge.classList.add('visible');
   }, 1200);
-
-  // 7. All words glisten in sync + typewriter starts
-  setTimeout(() => {
-    [wordHi, wordIm, wordYash].forEach((word) => {
-      word.style.opacity   = '1';
-      word.style.transform = 'none';
-      word.style.animation = 'textGlisten 4s ease-in-out infinite';
-    });
-    initTypewriter();
-  }, 1400);
 }
 
 // ── Slideshow ─────────────────────────────────────────────────

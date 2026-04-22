@@ -6,28 +6,6 @@
  * and sticky section side label.
  */
 
-import { initMagneticButtons } from './cursor';
-
-// ── Spotlight ───────────────────────────────────────────────
-export function initSpotlight(): void {
-  const el = document.getElementById('spotlight');
-  if (!el) return;
-
-  // Only on hover-capable devices
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    el.style.display = 'none';
-    return;
-  }
-
-  el.style.opacity = '0';
-
-  document.addEventListener('mousemove', (e) => {
-    el.style.left    = `${e.clientX}px`;
-    el.style.top     = `${e.clientY}px`;
-    el.style.opacity = '1';
-  }, { once: false });
-}
-
 // ── Typewriter tagline ──────────────────────────────────────
 export function initTypewriter(): void {
   const el = document.getElementById('hero-tagline');
@@ -270,13 +248,9 @@ export function initFooterYear(): void {
 
 // ── Init all effects ────────────────────────────────────────
 export function initAllEffects(): void {
-  initSpotlight();
   initThemeToggle();
   initScrollProgress();
-  initScrambleObserver();
   initCardTilt();
-  initStatsCounter();
   initHeroParallax();
   initFooterYear();
-  initMagneticButtons();
 }

@@ -37,10 +37,6 @@
   </div>
 
   <!-- ── Global effects ────────────────────────────────── -->
-  <div id="cursor-dot"       aria-hidden="true"></div>
-  <div id="cursor-ring"      aria-hidden="true"></div>
-  <div id="spotlight"        aria-hidden="true"></div>
-  <div id="noise-overlay"    aria-hidden="true"></div>
   <div id="scroll-progress"  aria-hidden="true"></div>
   <!-- ── Navbar ─────────────────────────────────────────── -->
   <nav id="navbar" aria-label="Main navigation">
@@ -96,21 +92,16 @@
   <!-- ── Hero ───────────────────────────────────────────── -->
   <section id="hero" aria-label="Introduction">
 
-    <div id="hero-gradient" aria-hidden="true"></div>
-    <div id="ember-overlay" aria-hidden="true"></div>
-
     <!-- Single text element: starts centered, slides left on settle -->
     <div id="hero-text" aria-label="Hi, I'm Yash Sah">
       <div id="hero-words">
-        <span class="hero-word" id="word-hi">Hi,</span>
-        <span class="hero-word" id="word-im">I'm</span>
-        <span class="hero-word" id="word-yash">Yash Sah</span>
+        <span class="hero-word">Hi, I'm Yash Sah</span>
       </div>
     </div>
 
     <!-- Tagline + CTA (positioned by JS after text lands) -->
     <div id="hero-left-extras">
-      <p id="hero-tagline">CS @ Waterloo. ICPC national champion. I build things that matter.</p>
+      <p id="hero-tagline">CS @ Waterloo. National ICPC champion. I fix things that don't work and build things that should.</p>
       <div id="hero-cta-buttons">
         <a href="#projects" class="btn-primary">See my work</a>
         <a href="#contact"  class="btn-secondary">Get in touch</a>
@@ -139,12 +130,12 @@
   </section>
 
   <!-- ── About ──────────────────────────────────────────── -->
-  <section id="about" aria-label="About me" class="dot-grid">
+  <section id="about" aria-label="About me">
     <div class="section-label reveal">About Me</div>
 
     <div id="about-content">
       <div id="about-text">
-        <h2 class="reveal scramble">More than just code.</h2>
+        <h2 class="reveal">More than just code.</h2>
         <p class="reveal">
           I'm a Computer Science student at the University of Waterloo (Faculty of
           Mathematics Global Scholarship, President's Scholarship of Distinction),
@@ -160,10 +151,10 @@
           are curious about everything — not just their tech stack.
         </p>
         <div id="about-highlights" class="reveal">
-          <div class="highlight-chip">🎓 UWaterloo CS 2A</div>
-          <div class="highlight-chip">🏆 ICPC National Champion</div>
-          <div class="highlight-chip">🤖 ML / AI Builder</div>
-          <div class="highlight-chip">📍 Doha → Waterloo</div>
+          <div class="highlight-chip">UWaterloo CS 2A</div>
+          <div class="highlight-chip">ICPC National Champion</div>
+          <div class="highlight-chip">ML / AI Builder</div>
+          <div class="highlight-chip">Doha → Waterloo</div>
         </div>
       </div>
 
@@ -171,20 +162,20 @@
       <div id="about-sidebar" class="reveal">
         <div class="sidebar-widget" id="currently-widget">
           <div class="widget-label">Currently</div>
-          <div class="currently-item">🔨 Applying to internships in Doha (Lesha Bank, QFCRA)</div>
-          <div class="currently-item">📖 Reading CLRS Algorithms</div>
-          <div class="currently-item">🎵 Listening to Tame Impala</div>
+          <div class="currently-item">Applying to internships in Doha (Lesha Bank, QFCRA)</div>
+          <div class="currently-item">Reading CLRS Algorithms</div>
+          <div class="currently-item">Listening to Tame Impala</div>
         </div>
         <div class="sidebar-widget">
           <div class="widget-label">Interests</div>
           <div id="interest-tags">
-            <span class="interest-tag">🏎 Formula 1</span>
-            <span class="interest-tag">🤖 Machine Learning</span>
-            <span class="interest-tag">🥋 Karate</span>
-            <span class="interest-tag">🌍 Travel</span>
-            <span class="interest-tag">⚡ Hackathons</span>
-            <span class="interest-tag">🎵 Music</span>
-            <span class="interest-tag">☕ Coffee</span>
+            <span class="interest-tag">Formula 1</span>
+            <span class="interest-tag">Machine Learning</span>
+            <span class="interest-tag">Karate</span>
+            <span class="interest-tag">Travel</span>
+            <span class="interest-tag">Hackathons</span>
+            <span class="interest-tag">Music</span>
+            <span class="interest-tag">Coffee</span>
           </div>
         </div>
       </div>
@@ -193,15 +184,15 @@
     <!-- Stats row -->
     <div id="stats-row" class="reveal">
       <div class="stat-item">
-        <span class="stat-number" data-target="7">0</span>
+        <span class="stat-number">7</span>
         <span class="stat-label">Projects</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number" data-target="4">0</span>
+        <span class="stat-number">4</span>
         <span class="stat-label">Hackathons</span>
       </div>
       <div class="stat-item">
-        <span class="stat-number" data-target="12">0</span>
+        <span class="stat-number">12</span>
         <span class="stat-label">Technologies</span>
       </div>
     </div>
@@ -214,7 +205,7 @@
   <!-- ── Timeline ───────────────────────────────────────── -->
   <section id="timeline" aria-label="Timeline and experience">
     <div class="section-label reveal">Journey</div>
-    <h2 class="reveal scramble">Everything, start to finish.</h2>
+    <h2 class="reveal">Everything, start to finish.</h2>
 
     <div class="timeline">
 
@@ -222,7 +213,7 @@
       <div class="timeline-item reveal">
         <div class="timeline-card">
           <div class="timeline-date">Sept 2024 – Present</div>
-          <div class="timeline-category">🎓 Education</div>
+          <div class="timeline-category">Education</div>
           <h3>University of Waterloo</h3>
           <div class="timeline-subtitle">Bachelor of Computer Science · GPA 3.9/4.0 · Class of 2029</div>
           <p>Studying CS with a focus on algorithms, machine learning, and systems programming. Holder of the Faculty of Mathematics Global Scholarship ($15k CAD) and the President's Scholarship of Distinction ($2k CAD).</p>
@@ -240,7 +231,7 @@
       <div class="timeline-item reveal">
         <div class="timeline-card">
           <div class="timeline-date">Feb 2026</div>
-          <div class="timeline-category">🏆 Hackathon — Winner</div>
+          <div class="timeline-category">Hackathon — Winner</div>
           <h3>Hack Canada 2026</h3>
           <div class="timeline-subtitle">Build with AI Track Winner · Finalist: Most Technically Complex Hack</div>
           <p>Built PulmoScan — an ML-powered lung disease detection and 3D visualisation platform from raw DICOM CT scans. Engineered a dual-track pipeline combining Otsu thresholding with a fine-tuned EfficientNet-B0 classifier and Grad-CAM heatmaps, paired with an interactive VTK.js 3D lung viewer using marching cubes surface extraction. Named finalist for Most Technically Complex Hack and currently advancing to Google's startup funding track.</p>
@@ -261,7 +252,7 @@
       <div class="timeline-item reveal">
         <div class="timeline-card">
           <div class="timeline-date">2026</div>
-          <div class="timeline-category">🏆 Case Competition — Semifinalist</div>
+          <div class="timeline-category">Case Competition — Semifinalist</div>
           <h3>UW Management Consulting Case Competition</h3>
           <div class="timeline-subtitle">Semifinalist · Top 8 of 80 teams</div>
           <p>Reached the semifinals with a $1B ESG capital-allocation framework for Saudi Aramco, modelling ~1.5 MtCO₂e/year verified abatement within 36 months at a ~16% portfolio IRR. Conducted primary research via Bloomberg Terminals and IEA net-zero pathways; built a MAC curve with 10-year NPV sensitivity benchmarked against EU ETS. Defended to judges from McKinsey, BCG, Deloitte, and KPMG.</p>
@@ -280,7 +271,7 @@
       <div class="timeline-item reveal">
         <div class="timeline-card">
           <div class="timeline-date">2026</div>
-          <div class="timeline-category">🏆 Case Competition — Round 2</div>
+          <div class="timeline-category">Case Competition — Round 2</div>
           <h3>Google Build with AI Case Competition</h3>
           <div class="timeline-subtitle">NeuroAdapt · Advanced to Round 2</div>
           <p>Built NeuroAdapt — an AI exam prep platform that reframes learning as a diagnostic problem. Classifies mistakes as conceptual, procedural, computational, or fatigue-driven to isolate exact prerequisite gaps. Each mechanism is grounded in peer-reviewed cognitive science: Bjork's New Theory of Disuse, Kapur's productive failure (d = 0.6–2.3), and Gollwitzer &amp; Sheeran's implementation-intentions meta-analysis. Defended to Google engineers and case judges.</p>
@@ -299,7 +290,7 @@
       <div class="timeline-item reveal">
         <div class="timeline-card">
           <div class="timeline-date">2026</div>
-          <div class="timeline-category">🏆 Hackathon — 1st Place</div>
+          <div class="timeline-category">Hackathon — 1st Place</div>
           <h3>DDC × Ignition Hacks 2026</h3>
           <div class="timeline-subtitle">Urban Marble · First Place Winner</div>
           <p>Led a 4-person team to build Urban Marble — an AI-powered 3D city exploration platform. Features a mobile-first AR building scanner (live webcam frames + GPS → GPT-4o Vision → architectural metadata), a cinematic story pipeline (GPT-4o-mini narration + DALL-E 3 imagery + Google Street View + OpenAI TTS, all parallelised under 10s), and a 400+ rental listings aggregator across NYC and Toronto. Built on a CesiumJS 3D globe with OSM Buildings geometry.</p>
@@ -323,7 +314,7 @@
       <div class="timeline-item reveal">
         <div class="timeline-card">
           <div class="timeline-date">2024</div>
-          <div class="timeline-category">🏆 Competition — 1st Place</div>
+          <div class="timeline-category">Competition — 1st Place</div>
           <h3>ICPC National Champion</h3>
           <div class="timeline-subtitle">Qatar Collegiate Programming Contest · 300+ participants · 6,000 QAR prize</div>
           <p>Won 1st place among 300+ participants in Qatar, scoring equivalent to the 2nd-place university-category team. Advanced to the regional Arab Collegiate Programming Contest (ACPC). Featured in the Gulf Times.</p>
@@ -341,7 +332,7 @@
       <div class="timeline-item reveal">
         <div class="timeline-card">
           <div class="timeline-date">2024</div>
-          <div class="timeline-category">🧑‍💼 Leadership</div>
+          <div class="timeline-category">Leadership</div>
           <h3>Core Organiser — DPS Hackathon</h3>
           <div class="timeline-subtitle">First Inter-School Hackathon in Qatar · 100+ participants</div>
           <p>Designed and led the school's inaugural inter-school hackathon with 100+ participants, fostering collaboration and innovation in STEM fields. Brought in Cisco professionals as judges. Featured in the Gulf Times.</p>
@@ -358,7 +349,7 @@
       <div class="timeline-item reveal">
         <div class="timeline-card">
           <div class="timeline-date">2024</div>
-          <div class="timeline-category">🚀 Competition — Finalist</div>
+          <div class="timeline-category">Competition — Finalist</div>
           <h3>Alice3 Game Dev Competition Finalist</h3>
           <div class="timeline-subtitle">CMU Qatar · Top 80+ teams</div>
           <p>Reached the final level of the Alice Programming Competition held at Carnegie Mellon University Qatar, competing against 80+ teams. Developed skills in 3D animation and event-driven game programming.</p>
@@ -375,7 +366,7 @@
       <div class="timeline-item reveal">
         <div class="timeline-card">
           <div class="timeline-date">2024</div>
-          <div class="timeline-category">🧠 Olympiad</div>
+          <div class="timeline-category">Olympiad</div>
           <h3>Zonal Computing Olympiad (ZCO)</h3>
           <div class="timeline-subtitle">Indian Computing Olympiad — Top 100</div>
           <p>Obtained a top-100 finish in the first stage of the Indian Computing Olympiad, qualifying through the Zonal Computing Olympiad round.</p>
@@ -391,7 +382,7 @@
       <div class="timeline-item reveal">
         <div class="timeline-card">
           <div class="timeline-date">2023–24</div>
-          <div class="timeline-category">📜 Certification</div>
+          <div class="timeline-category">Certification</div>
           <h3>Cisco Python Certifications</h3>
           <div class="timeline-subtitle">Python Essentials 1 &amp; 2 · Skills for All</div>
           <p>Completed Cisco's official Python Programming certifications (Python Essentials 1 and 2) through the Skills for All programme.</p>
@@ -410,15 +401,15 @@
   </section>
 
   <!-- ── Projects ───────────────────────────────────────── -->
-  <section id="projects" aria-label="Projects" class="dot-grid">
+  <section id="projects" aria-label="Projects">
     <div class="section-label reveal">Projects</div>
-    <h2 class="reveal scramble">Things I've built.</h2>
+    <h2 class="reveal">Things I've built.</h2>
 
     <div id="projects-grid" class="stagger-grid">
 
       <!-- Card 1 — PulmoScan (featured) -->
       <div class="project-card project-featured reveal" data-index="0">
-        <div class="featured-badge">⭐ Featured · Hack Canada 2026 Winner · Most Technically Complex Hack Finalist</div>
+        <div class="featured-badge">Featured · Hack Canada 2026 Winner · Most Technically Complex Hack Finalist</div>
         <div class="project-card-header">
           <span class="project-title">PulmoScan</span>
           <a class="project-link" href="https://github.com/noice232/pulmoscan" target="_blank" rel="noopener" aria-label="PulmoScan GitHub">↗</a>
@@ -447,7 +438,7 @@
 
       <!-- Card 2 — Urban Marble -->
       <div class="project-card reveal" data-index="1">
-        <div class="featured-badge">⭐ DDC × Ignition Hacks 2026 — 1st Place</div>
+        <div class="featured-badge">DDC × Ignition Hacks 2026 — 1st Place</div>
         <div class="project-card-header">
           <span class="project-title">Urban Marble</span>
         </div>
@@ -586,7 +577,7 @@
   <!-- ── Skills ─────────────────────────────────────────── -->
   <section id="skills" aria-label="Skills and tech stack">
     <div class="section-label reveal">Tech Stack</div>
-    <h2 class="reveal scramble">What I work with.</h2>
+    <h2 class="reveal">What I work with.</h2>
 
 
     <div id="skills-cloud" class="reveal">
@@ -672,46 +663,16 @@
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R" />
         R
       </span>
-      <span class="skill-tag" data-level="familiar">
-        <span class="skill-emoji">🌍</span>
-        Cesium.js
-      </span>
-      <span class="skill-tag" data-level="familiar">
-        <span class="skill-emoji">🫁</span>
-        VTK.js
-      </span>
-      <span class="skill-tag" data-level="familiar">
-        <span class="skill-emoji">✨</span>
-        Framer Motion
-      </span>
-      <span class="skill-tag" data-level="familiar">
-        <span class="skill-emoji">🤖</span>
-        OpenAI SDK
-      </span>
-      <span class="skill-tag" data-level="familiar">
-        <span class="skill-emoji">📊</span>
-        Matplotlib
-      </span>
-      <span class="skill-tag" data-level="familiar">
-        <span class="skill-emoji">🧠</span>
-        Machine Learning
-      </span>
-      <span class="skill-tag" data-level="familiar">
-        <span class="skill-emoji">⚙️</span>
-        Data Structures &amp; Algorithms
-      </span>
-      <span class="skill-tag" data-level="familiar">
-        <span class="skill-emoji">🌐</span>
-        REST APIs
-      </span>
-      <span class="skill-tag" data-level="familiar">
-        <span class="skill-emoji">💹</span>
-        Financial Modelling
-      </span>
-      <span class="skill-tag" data-level="familiar">
-        <span class="skill-emoji">🗺</span>
-        Geospatial / 3D
-      </span>
+      <span class="skill-tag" data-level="familiar">Cesium.js</span>
+      <span class="skill-tag" data-level="familiar">VTK.js</span>
+      <span class="skill-tag" data-level="familiar">Framer Motion</span>
+      <span class="skill-tag" data-level="familiar">OpenAI SDK</span>
+      <span class="skill-tag" data-level="familiar">Matplotlib</span>
+      <span class="skill-tag" data-level="familiar">Machine Learning</span>
+      <span class="skill-tag" data-level="familiar">Data Structures &amp; Algorithms</span>
+      <span class="skill-tag" data-level="familiar">REST APIs</span>
+      <span class="skill-tag" data-level="familiar">Financial Modelling</span>
+      <span class="skill-tag" data-level="familiar">Geospatial / 3D</span>
 
     </div>
 
@@ -736,7 +697,7 @@
   <!-- ── Contact ────────────────────────────────────────── -->
   <section id="contact" aria-label="Contact">
     <div class="section-label reveal">Contact</div>
-    <h2 class="reveal scramble">Want to build something?</h2>
+    <h2 class="reveal">Want to build something?</h2>
     <p id="contact-sub" class="reveal">
       I'm always open to interesting projects and conversations. Let's talk.
     </p>

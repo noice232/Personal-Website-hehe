@@ -10,67 +10,6 @@
   background: var(--color-bg);
 }
 
-/* ── Gradient mesh background — layer 1 ──────────────────── */
-#hero-gradient {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(at 15% 20%, rgba(99,  102, 241, 0.16) 0px, transparent 45%),
-    radial-gradient(at 55% 12%, rgba(139, 92,  246, 0.13) 0px, transparent 45%),
-    radial-gradient(at 85% 55%, rgba(167, 139, 250, 0.13) 0px, transparent 45%),
-    radial-gradient(at 40% 75%, rgba(99,  102, 241, 0.11) 0px, transparent 45%),
-    radial-gradient(at 70% 85%, rgba(196, 181, 253, 0.09) 0px, transparent 45%),
-    radial-gradient(at 25% 55%, rgba(79,  70,  229, 0.09) 0px, transparent 45%);
-  background-size: 100% 100%;
-  animation: emberBreath 9s ease-in-out infinite;
-  transition: opacity 1.8s ease-out;
-  opacity: 1;
-}
-
-[data-theme="dark"] #hero-gradient {
-  background:
-    radial-gradient(at 20% 25%, rgba(99,  102, 241, 0.45) 0px, transparent 50%),
-    radial-gradient(at 80% 10%, rgba(139, 92,  246, 0.35) 0px, transparent 50%),
-    radial-gradient(at 5%  70%, rgba(79,  70,  229, 0.40) 0px, transparent 50%),
-    radial-gradient(at 75% 65%, rgba(167, 139, 250, 0.30) 0px, transparent 50%),
-    radial-gradient(at 45% 90%, rgba(109, 40,  217, 0.35) 0px, transparent 50%),
-    radial-gradient(at 55% 45%, rgba(196, 181, 253, 0.35) 0px, transparent 40%),
-    #08080F;
-}
-
-#hero-gradient.settling {
-  opacity: 0.35;
-}
-
-[data-theme="dark"] #hero-gradient.settling {
-  opacity: 0.55;
-}
-
-/* ── Gradient mesh — layer 2 ─────────────────────────────── */
-#ember-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  background:
-    radial-gradient(at 60% 20%, rgba(99,  102, 241, 0.12) 0px, transparent 45%),
-    radial-gradient(at 20% 55%, rgba(139, 92,  246, 0.10) 0px, transparent 45%),
-    radial-gradient(at 80% 75%, rgba(79,  70,  229, 0.11) 0px, transparent 45%),
-    radial-gradient(at 40% 15%, rgba(167, 139, 250, 0.12) 0px, transparent 45%),
-    radial-gradient(at 75% 45%, rgba(109, 40,  217, 0.10) 0px, transparent 45%);
-  background-size: 100% 100%;
-  animation: emberBreath2 13s ease-in-out infinite;
-  opacity: 0.8;
-}
-
-[data-theme="dark"] #ember-overlay {
-  mix-blend-mode: screen;
-  opacity: 0.65;
-}
-
 /* ── Hero text — single element, starts centered, slides left ── */
 #hero-text {
   position: absolute;
@@ -86,6 +25,7 @@
   display: flex;
   gap: 0.28em;
   align-items: baseline;
+  opacity: 0;
 }
 
 .hero-word {
@@ -94,28 +34,7 @@
   font-size: inherit;
   font-weight: 700;
   line-height: 1.1;
-  /* Shimmer-only gradient — no flat solid endpoints */
-  background: linear-gradient(
-    110deg,
-    var(--color-gradient-mid)    0%,
-    #C4B5FD                      12%,
-    #FFFFFF                      28%,
-    #F0F0FF                      50%,
-    #FFFFFF                      72%,
-    #C4B5FD                      88%,
-    var(--color-gradient-mid)    100%
-  );
-  background-size: 300% 100%;
-  background-position: 95% 50%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.hero-word.word-visible {
-  animation: wordFadeUp 900ms var(--ease-out) forwards;
+  color: var(--color-text-primary);
 }
 
 /* ── Left extras — tagline + buttons (top set by JS) ─────── */
@@ -166,14 +85,14 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+  background: var(--color-accent);
   color: #fff;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+  box-shadow: 0 4px 20px rgba(26, 95, 232, 0.30);
   will-change: transform;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.5);
+  box-shadow: 0 8px 32px rgba(26, 95, 232, 0.45);
   filter: brightness(1.08);
 }
 
@@ -233,7 +152,7 @@
   font-weight: 500;
   color: var(--color-text-secondary);
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.10);
+  box-shadow: 0 4px 16px rgba(26, 95, 232, 0.10);
   opacity: 0;
   transition: opacity 0.5s var(--ease-out);
 }

@@ -13,41 +13,6 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero background — layer 1: gentle opacity pulse */
-@keyframes emberBreath {
-  0%   { opacity: 0.85; }
-  33%  { opacity: 1.0;  }
-  66%  { opacity: 0.9;  }
-  100% { opacity: 0.85; }
-}
-
-/* Hero background — layer 2: different speed → organic flicker */
-@keyframes emberBreath2 {
-  0%   { opacity: 0.6;  }
-  40%  { opacity: 0.75; }
-  70%  { opacity: 0.55; }
-  100% { opacity: 0.6;  }
-}
-
-/* Glisten shimmer sweep on gradient text */
-@keyframes textGlisten {
-  0%, 100% { background-position: 150% 50%; }
-  50%       { background-position:  100% 50%; }
-}
-
-/* Word-by-word hero entrance */
-@keyframes wordFadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Stats count-up pulse */
-@keyframes statPop {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.08); }
-  100% { transform: scale(1); }
-}
-
 /* Rotating conic border on featured card */
 @keyframes rotateBorder {
   from { --border-angle: 0deg; }

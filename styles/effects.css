@@ -1,61 +1,6 @@
 /* ============================================================
-   GLOBAL EFFECTS: noise overlay, dot grid, spotlight,
-   scroll-progress bar, sticky section side-label
+   GLOBAL EFFECTS: scroll-progress bar
    ============================================================ */
-
-/* ── Grain / noise texture ──────────────────────────────── */
-#noise-overlay {
-  position: fixed;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
-  pointer-events: none;
-  z-index: 9000;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 160px 160px;
-}
-
-[data-theme="dark"] #noise-overlay {
-  opacity: 0.055;
-}
-
-/* ── Dot grid (applied to section backgrounds) ──────────── */
-.dot-grid {
-  background-image: radial-gradient(
-    circle,
-    var(--dot-color) 1.2px,
-    transparent 1.2px
-  );
-  background-size: 26px 26px;
-}
-
-/* ── Spotlight (follows cursor) ──────────────────────────── */
-#spotlight {
-  position: fixed;
-  width: 480px;
-  height: 480px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(
-    circle at center,
-    rgba(99, 102, 241, 0.055) 0%,
-    transparent 70%
-  );
-  transition: left 0.12s linear, top 0.12s linear;
-  will-change: left, top;
-}
-
-[data-theme="dark"] #spotlight {
-  background: radial-gradient(
-    circle at center,
-    rgba(129, 140, 248, 0.10) 0%,
-    transparent 70%
-  );
-}
 
 /* ── Scroll progress bar ─────────────────────────────────── */
 #scroll-progress {
@@ -64,13 +9,8 @@
   left: 0;
   height: 2px;
   width: 0%;
-  background: linear-gradient(
-    90deg,
-    var(--color-gradient-start),
-    var(--color-gradient-end)
-  );
+  background: var(--color-accent);
   z-index: 999;
   transition: width 0.08s linear;
   will-change: width;
 }
-

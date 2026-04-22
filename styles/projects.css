@@ -13,10 +13,7 @@
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   line-height: 1.2;
-  background: var(--gradient-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-text-primary);
   margin-bottom: 48px;
 }
 
@@ -59,7 +56,7 @@
   grid-area: feat;
   padding: 36px;
   background:
-    linear-gradient(135deg, rgba(99, 102, 241, 0.06) 0%, rgba(139, 92, 246, 0.04) 100%),
+    linear-gradient(135deg, rgba(26, 95, 232, 0.05) 0%, rgba(74, 138, 244, 0.03) 100%),
     var(--color-surface);
   position: relative;
   overflow: hidden;
@@ -67,7 +64,7 @@
 
 [data-theme="dark"] .project-featured {
   background:
-    linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.06) 100%),
+    linear-gradient(135deg, rgba(26, 95, 232, 0.10) 0%, rgba(74, 138, 244, 0.05) 100%),
     var(--color-surface);
 }
 

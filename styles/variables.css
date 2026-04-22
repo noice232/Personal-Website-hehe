@@ -1,26 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,400&display=swap');
 
 :root {
-  /* ── Gradient accent ──────────────────────────────────── */
-  --color-gradient-start: #6366F1;
-  --color-gradient-mid:   #8B5CF6;
-  --color-gradient-end:   #A78BFA;
-
   /* ── Light mode palette ───────────────────────────────── */
-  --color-bg:             #F8F9FF;
-  --color-surface:        rgba(248, 249, 255, 0.72);
+  --color-bg:             #fafaf8;
+  --color-surface:        rgba(250, 250, 248, 0.85);
   --color-surface-solid:  #FFFFFF;
-  --color-surface-hover:  rgba(238, 240, 255, 0.9);
-  --color-text-primary:   #0F0F1A;
+  --color-surface-hover:  rgba(240, 240, 238, 0.9);
+  --color-text-primary:   #0a0a0a;
   --color-text-secondary: #5A5A7A;
-  --color-accent:         #6366F1;
+  --color-accent:         #1a5fe8;
   --color-border:         rgba(0, 0, 0, 0.08);
-  --color-border-accent:  rgba(99, 102, 241, 0.22);
+  --color-border-accent:  rgba(26, 95, 232, 0.22);
   --dot-color:            rgba(0, 0, 0, 0.10);
 
   /* ── Shadows ──────────────────────────────────────────── */
   --shadow-card:       0 2px 20px rgba(0, 0, 0, 0.06);
-  --shadow-card-hover: 0 16px 48px rgba(99, 102, 241, 0.16);
+  --shadow-card-hover: 0 16px 48px rgba(26, 95, 232, 0.12);
 
   /* ── Typography ───────────────────────────────────────── */
   --font-main:    'DM Sans', sans-serif;
@@ -36,8 +31,6 @@
   --border-radius-card: 16px;
   --border-radius-pill: 999px;
 
-  /* ── Derived ──────────────────────────────────────────── */
-  --gradient-text: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
 }
 
 /* ── Dark mode overrides ────────────────────────────────── */
@@ -49,10 +42,10 @@
   --color-text-primary:   #F0F0FF;
   --color-text-secondary: #9898B8;
   --color-border:         rgba(255, 255, 255, 0.07);
-  --color-border-accent:  rgba(129, 140, 248, 0.30);
+  --color-border-accent:  rgba(74, 138, 244, 0.30);
   --dot-color:            rgba(255, 255, 255, 0.055);
   --shadow-card:          0 2px 20px rgba(0, 0, 0, 0.45);
-  --shadow-card-hover:    0 16px 48px rgba(129, 140, 248, 0.25);
+  --shadow-card-hover:    0 16px 48px rgba(26, 95, 232, 0.20);
 }
 
 body {
@@ -62,10 +55,3 @@ body {
   transition: background-color 0.4s ease, color 0.3s ease;
 }
 
-/* Hide default cursor on hover-capable devices — cursor.ts takes over */
-@media (hover: hover) and (pointer: fine) {
-  body.custom-cursor,
-  body.custom-cursor * {
-    cursor: none !important;
-  }
-}
