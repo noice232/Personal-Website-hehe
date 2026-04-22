@@ -4,8 +4,8 @@
  * Timing:
  *   0ms       : panels begin sliding in from edges
  *   550ms     : doors fully closed — scroll to target, show destination label
- *   1750ms    : begin sliding out  (1200ms hold)
- *   2250ms    : doors fully open — transition complete
+ *   2750ms    : begin sliding out  (1500ms hold)
+ *   3250ms    : doors fully open — transition complete
  */
 
 const overlay     = document.getElementById('airlock-overlay')     as HTMLElement;
@@ -87,7 +87,7 @@ export function triggerAirlockTransition(targetId: string, label: string): void 
     // Switch to target section instantly while doors are closed
     showSection(targetId);
 
-    // Hold 1200ms, then open
+    // Hold 2200ms, then open
     setTimeout(() => {
       leftPanel.classList.remove('doors-closed');
       rightPanel.classList.remove('doors-closed');
@@ -98,7 +98,7 @@ export function triggerAirlockTransition(targetId: string, label: string): void 
         overlay.classList.remove('active');
         isTransitioning = false;
       });
-    }, 1200);
+    }, 1500);
   });
 }
 

@@ -240,6 +240,24 @@ export function initFooterYear(): void {
   if (el) el.textContent = new Date().getFullYear().toString();
 }
 
+// ── Resume buttons: open in new tab + trigger download ──────
+function initResumeButtons(): void {
+  const RESUME_URL = 'dist/assets/Yash_Resume_Doha_Bank.docx (1).pdf';
+
+  document.querySelectorAll<HTMLElement>('.btn-resume, .contact-item--resume').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open(RESUME_URL, '_blank', 'noopener');
+      const a = document.createElement('a');
+      a.href = RESUME_URL;
+      a.download = 'Yash_Sah_Resume.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  });
+}
+
 // ── Init all effects ────────────────────────────────────────
 export function initAllEffects(): void {
   initThemeToggle();
@@ -247,4 +265,5 @@ export function initAllEffects(): void {
   initCardTilt();
   initHeroParallax();
   initFooterYear();
+  initResumeButtons();
 }

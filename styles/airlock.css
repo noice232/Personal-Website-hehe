@@ -40,7 +40,7 @@
 #airlock-sh {
   font-family: var(--font-display, 'Poppins', sans-serif);
   font-size: clamp(3rem, 8vw, 7rem);
-  font-weight: 700;
+  font-weight: 400;
   color: #ffffff;
   line-height: 1;
   display: block;
@@ -60,11 +60,11 @@
   left: 50%;
   transform: translate(-50%, 3.8rem);
   font-family: var(--font-main, 'DM Sans', sans-serif);
-  font-size: clamp(0.7rem, 1.2vw, 0.85rem);
-  font-weight: 500;
-  letter-spacing: 0.22em;
+  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.75);
   opacity: 0;
   white-space: nowrap;
   transition: opacity 120ms ease;
