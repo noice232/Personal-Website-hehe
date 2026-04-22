@@ -75,11 +75,11 @@
 
 .contact-item:hover svg { transform: scale(1.15); }
 
-/* Resume download chip — accent tint to distinguish from social links */
+/* Resume download chip — solid background ensures legibility over canvas blob */
 .contact-item--resume {
   color: var(--color-accent);
   border-color: var(--color-border-accent);
-  background: rgba(26, 95, 232, 0.04);
+  background: var(--color-surface-solid);
   font-weight: 600;
 }
 

@@ -12,17 +12,16 @@
 
 import { triggerAirlockTransition } from './airlock';
 
-const SECTION_IDS = ['hero', 'highlights', 'about', 'timeline', 'projects', 'skills', 'contact'] as const;
+const SECTION_IDS = ['hero', 'about', 'timeline', 'projects', 'skills', 'contact'] as const;
 type SectionId = typeof SECTION_IDS[number];
 
 const SECTION_LABELS: Record<SectionId, string> = {
-  hero:       'Home',
-  highlights: 'Highlights',
-  about:      'About',
-  timeline:   'Journey',
-  projects:   'Projects',
-  skills:     'Skills',
-  contact:    'Contact',
+  hero:     'Home',
+  about:    'About',
+  timeline: 'Journey',
+  projects: 'Projects',
+  skills:   'Skills',
+  contact:  'Contact',
 };
 
 const TRANSITION_DURATION_MS = 2300; // airlock total (2250ms) + 50ms buffer
