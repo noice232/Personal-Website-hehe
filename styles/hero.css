@@ -7,7 +7,7 @@
   height: 100vh;
   min-height: 600px;
   overflow: hidden;
-  background: var(--color-bg);
+  background: transparent;
 }
 
 /* ── Hero text — single element, starts centered, slides left ── */
@@ -34,7 +34,8 @@
   font-size: inherit;
   font-weight: 700;
   line-height: 1.1;
-  color: var(--color-text-primary);
+  color: #ffffff;
+  mix-blend-mode: exclusion;
 }
 
 /* ── Left extras — tagline + buttons (top set by JS) ─────── */
@@ -58,7 +59,8 @@
 #hero-tagline {
   font-family: var(--font-main);
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--color-text-secondary);
+  color: #ffffff;
+  mix-blend-mode: exclusion;
   line-height: 1.65;
   max-width: 46ch;
   min-height: 1.8em; /* reserve space for typewriter */

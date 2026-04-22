@@ -15,6 +15,7 @@
   <!-- CSS: reset → variables → animations → effects → cursor → nav → sections -->
   <link rel="stylesheet" href="styles/reset.css" />
   <link rel="stylesheet" href="styles/variables.css" />
+  <link rel="stylesheet" href="styles/canvas.css" />
   <link rel="stylesheet" href="styles/animations.css" />
   <link rel="stylesheet" href="styles/effects.css" />
   <link rel="stylesheet" href="styles/cursor.css" />
@@ -29,6 +30,8 @@
   <link rel="stylesheet" href="styles/airlock.css" />
 </head>
 <body>
+
+  <canvas id="webgl-canvas" aria-hidden="true"></canvas>
 
   <!-- ── Airlock door transition ───────────────────────── -->
   <div id="airlock-overlay" aria-hidden="true">
@@ -872,6 +875,7 @@
 
   </main><!-- #sections-wrapper -->
 
+  <script type="module" src="scripts/canvas.ts"></script>
   <script type="module" src="scripts/hero.ts"></script>
   <script type="module" src="scripts/highlights.ts"></script>
 </body>
