@@ -15,36 +15,48 @@ export function showNav(): void {
 }
 
 // ── Active section highlighting ─────────────────────────────
-function initActiveLinks(): void {
-  const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]'));
+const NAV_SECTION_IDS = ['about', 'timeline', 'projects', 'skills', 'contact'];
 
-  function updateActive(): void {
-    const scrollY = window.scrollY + window.innerHeight * 0.35;
+const SECTION_LABELS: Record<string, string> = {
+  about:    'About',
+  timeline: 'Journey',
+  projects: 'Projects',
+  skills:   'Tech Stack',
+  contact:  'Contact',
+};
 
-    // At the very bottom of the page, force the last section active
-    const atBottom =
-      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
+const sectionLabelSide = document.getElementById('section-label-side');
 
-    let active: HTMLElement | null = null;
-    if (atBottom) {
-      active = sections[sections.length - 1];
-    } else {
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (sections[i].offsetTop <= scrollY) {
-          active = sections[i];
-          break;
-        }
-      }
+function getActiveSectionId(): string {
+  const scrollY = window.scrollY + window.innerHeight * 0.25;
+  let activeId = NAV_SECTION_IDS[0];
+  for (const id of NAV_SECTION_IDS) {
+    const el = document.getElementById(id);
+    if (el && el.offsetTop <= scrollY) {
+      activeId = id;
     }
-
-    navLinks.forEach((link) => {
-      link.classList.toggle('active', !!active && link.getAttribute('href') === `#${active.id}`);
-    });
   }
-
-  window.addEventListener('scroll', updateActive, { passive: true });
-  updateActive();
+  return activeId;
 }
+
+function updateActiveState(): void {
+  const activeId = getActiveSectionId();
+
+  navLinks.forEach((link) => {
+    const href = link.getAttribute('href');
+    link.classList.toggle('active', href === `#${activeId}`);
+  });
+
+  if (sectionLabelSide) {
+    const label = SECTION_LABELS[activeId] ?? '';
+    sectionLabelSide.textContent = label;
+    sectionLabelSide.classList.toggle('visible', !!label);
+  }
+}
+
+window.addEventListener('scroll', updateActiveState, { passive: true });
+document.addEventListener('DOMContentLoaded', updateActiveState);
+updateActiveState();
 
 // ── Hamburger menu ───────────────────────────────────────────
 function initHamburger(): void {
@@ -74,5 +86,4 @@ function initHamburger(): void {
   });
 }
 
-initActiveLinks();
 initHamburger();

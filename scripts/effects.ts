@@ -246,48 +246,6 @@ export function initScrollProgress(): void {
   }, { passive: true });
 }
 
-// ── Sticky section side label ───────────────────────────────
-export function initSideSectionLabel(): void {
-  const label    = document.getElementById('section-label-side');
-  const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]'));
-  if (!label || sections.length === 0) return;
-
-  const sectionNames: Record<string, string> = {
-    hero:     'Intro',
-    about:    'About',
-    timeline: 'Journey',
-    projects: 'Projects',
-    skills:   'Skills',
-    contact:  'Contact',
-  };
-
-  function update(): void {
-    const scrollY = window.scrollY + window.innerHeight * 0.35;
-    const atBottom =
-      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
-
-    let active: HTMLElement | null = null;
-    if (atBottom) {
-      active = sections[sections.length - 1];
-    } else {
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (sections[i].offsetTop <= scrollY) { active = sections[i]; break; }
-      }
-    }
-
-    const id = active?.id ?? '';
-    if (!id || id === 'hero') {
-      label.classList.remove('visible');
-    } else {
-      label.textContent = sectionNames[id] ?? id;
-      label.classList.add('visible');
-    }
-  }
-
-  window.addEventListener('scroll', update, { passive: true });
-  update();
-}
-
 // ── Footer year ─────────────────────────────────────────────
 export function initFooterYear(): void {
   const el = document.getElementById('footer-year');
@@ -303,7 +261,6 @@ export function initAllEffects(): void {
   initCardTilt();
   initStatsCounter();
   initHeroParallax();
-  initSideSectionLabel();
   initFooterYear();
   initMagneticButtons();
 }
