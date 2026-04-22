@@ -42,3 +42,8 @@ button {
   border: none;
   background: none;
 }
+
+main {
+  position: relative;
+  z-index: 1;
+}

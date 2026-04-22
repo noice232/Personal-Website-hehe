@@ -34,8 +34,7 @@
   font-size: inherit;
   font-weight: 700;
   line-height: 1.1;
-  color: #ffffff;
-  mix-blend-mode: exclusion;
+  color: var(--color-text-primary);
 }
 
 /* ── Left extras — tagline + buttons (top set by JS) ─────── */
@@ -59,8 +58,7 @@
 #hero-tagline {
   font-family: var(--font-main);
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: #ffffff;
-  mix-blend-mode: exclusion;
+  color: var(--color-text-secondary);
   line-height: 1.65;
   max-width: 46ch;
   min-height: 1.8em; /* reserve space for typewriter */
@@ -154,11 +152,11 @@
 }
 .hero-hl-viewport::before {
   left: 0;
-  background: linear-gradient(to right, var(--color-bg), transparent);
+  background: linear-gradient(to right, transparent, transparent);
 }
 .hero-hl-viewport::after {
   right: 0;
-  background: linear-gradient(to left, var(--color-bg), transparent);
+  background: linear-gradient(to left, transparent, transparent);
 }
 
 .hero-hl-track {
