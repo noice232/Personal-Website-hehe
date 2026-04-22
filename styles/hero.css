@@ -14,11 +14,12 @@
 #hero-text {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  transform: translate(calc(50vw - 50%), -50%);
   z-index: 2;
   white-space: nowrap;
   font-size: clamp(3.5rem, 8vw, 7rem);
+  will-change: transform;
 }
 
 #hero-words {

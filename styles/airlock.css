@@ -18,6 +18,7 @@
   background: #0a0a0a;
   display: flex;
   align-items: center;
+  will-change: transform;
   /* No CSS transition — JS drives animation via requestAnimationFrame */
 }
 

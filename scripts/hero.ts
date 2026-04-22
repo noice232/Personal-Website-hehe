@@ -46,19 +46,15 @@ function settleHero(): void {
   const isMobile = window.innerWidth <= 900;
 
   if (!isMobile) {
-    // 1. Slide hero text center → left, shrinking font
+    // 1. Slide hero text center → left, shrinking font (transform-only = compositor thread, no reflow)
     heroText.style.transition = [
-      'left 0.8s var(--ease-out)',
-      'top 0.8s var(--ease-out)',
-      'transform 0.8s var(--ease-out)',
-      'font-size 0.8s var(--ease-out)',
+      'transform 0.9s var(--ease-out)',
+      'font-size 0.9s var(--ease-out)',
     ].join(', ');
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        heroText.style.left      = '10vw';
-        heroText.style.top       = '50%';
-        heroText.style.transform = 'translateY(-50%)';
+        heroText.style.transform = 'translate(10vw, -50%)';
         heroText.style.fontSize  = 'clamp(1.8rem, 3.5vw, 3rem)';
       });
     });
@@ -72,7 +68,7 @@ function settleHero(): void {
       const heroRect = heroEl.getBoundingClientRect();
       heroLeftExtras.style.top = `${textRect.bottom - heroRect.top + 20}px`;
       heroLeftExtras.classList.add('active');
-    }, 820);
+    }, 920);
   }
   // On mobile: CSS handles layout, content already visible via !important overrides
 

@@ -30,6 +30,8 @@ const WHEEL_DELTA_MIN        = 15;   // ignore micro trackpad movements
 
 let isTransitioning      = false;
 let currentSectionIndex  = 0;
+let atEdgeTicks          = 0;
+let lastEdgeDir: 1 | -1 | 0 = 0;
 
 // ── Active section ────────────────────────────────────────────────────
 
@@ -71,6 +73,16 @@ function navigate(direction: 1 | -1): void {
   if (direction ===  1 && !isAtBottom()) return;
   if (direction === -1 && !isAtTop())    return;
 
+  // Require one extra scroll at the edge before transitioning
+  if (direction !== lastEdgeDir) {
+    atEdgeTicks  = 0;
+    lastEdgeDir  = direction;
+  }
+  atEdgeTicks++;
+  if (atEdgeTicks < 2) return;
+  atEdgeTicks = 0;
+  lastEdgeDir = 0;
+
   isTransitioning     = true;
   currentSectionIndex = next;
 
@@ -85,34 +97,13 @@ function navigate(direction: 1 | -1): void {
   setTimeout(() => { isTransitioning = false; }, TRANSITION_DURATION_MS);
 }
 
-// ── Sync index when nav / buttons are clicked directly ───────────────
+// ── Sync index via airlock's section-change event ────────────────────
 
 function attachNavSyncListeners(): void {
-  // Desktop + mobile nav links
-  document.querySelectorAll<HTMLAnchorElement>(
-    '#nav-links a[href^="#"], #nav-mobile-menu a[href^="#"]'
-  ).forEach((link) => {
-    link.addEventListener('click', () => {
-      const href = link.getAttribute('href')?.replace('#', '');
-      if (!href) return;
-      const idx = SECTION_IDS.indexOf(href as SectionId);
-      if (idx !== -1) currentSectionIndex = idx;
-    });
-  });
-
-  // Logo click → hero
-  document.getElementById('nav-logo')?.addEventListener('click', () => {
-    currentSectionIndex = 0;
-  });
-
-  // Next-section buttons
-  document.querySelectorAll<HTMLButtonElement>('.section-next-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const targetId = btn.dataset.target as SectionId | undefined;
-      if (!targetId) return;
-      const idx = SECTION_IDS.indexOf(targetId);
-      if (idx !== -1) currentSectionIndex = idx;
-    });
+  window.addEventListener('section-change', (e: Event) => {
+    const id = (e as CustomEvent<{ id: string }>).detail?.id;
+    const idx = SECTION_IDS.indexOf(id as SectionId);
+    if (idx !== -1) currentSectionIndex = idx;
   });
 }
 
@@ -131,8 +122,11 @@ window.addEventListener(
     } else if (direction === -1 && isAtTop() && !isTransitioning) {
       e.preventDefault();
       navigate(-1);
+    } else {
+      // User scrolled back into section content — reset edge counter
+      atEdgeTicks = 0;
+      lastEdgeDir = 0;
     }
-    // Otherwise: do nothing — section scrolls normally via overflow-y: auto
   },
   { passive: false },
 );
