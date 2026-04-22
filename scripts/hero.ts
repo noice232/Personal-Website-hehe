@@ -79,67 +79,64 @@ function settleHero(): void {
   // 4. Navbar
   setTimeout(() => showNav(), isMobile ? 300 : 900);
 
-  // 5. Slideshow + badge
+  // 5. Carousel + badge
   setTimeout(() => {
-    initSlideshow();
+    initHeroCarousel();
     if (heroBadge && !isMobile) heroBadge.classList.add('visible');
   }, isMobile ? 500 : 1200);
 }
 
-// ── Slideshow — infinite peek carousel ───────────────────────
+// ── Hero carousel ─────────────────────────────────────────────
 
-function initSlideshow(): void {
-  const track = document.getElementById('hero-slide-track') as HTMLElement;
-  if (!track) return;
+function initHeroCarousel(): void {
+  const viewport = document.getElementById('hero-hl-viewport') as HTMLElement | null;
+  const track    = document.getElementById('hero-hl-track')    as HTMLElement | null;
+  if (!viewport || !track) return;
 
-  const origSlides = Array.from(track.querySelectorAll<HTMLElement>('.slide'));
-  if (origSlides.length <= 1) return;
-
-  const N = origSlides.length;
-  const GAP = 16; // must match CSS gap
-
-  // Append clones so the loop can seamlessly wrap
-  origSlides.forEach((s) => {
-    const clone = s.cloneNode(true) as HTMLElement;
-    clone.setAttribute('aria-hidden', 'true');
-    track.appendChild(clone);
-  });
-
-  let idx = 0;
+  const dotEls = Array.from(document.querySelectorAll<HTMLElement>('.hero-hl-dot'));
+  const cards  = Array.from(track.querySelectorAll<HTMLElement>('.hero-hl-card'));
+  const N      = cards.length;
+  const GAP    = 20;
+  let   cur    = 0;
+  let   autoId: number;
 
   function calcOffset(i: number): number {
-    const allSlides = track.querySelectorAll<HTMLElement>('.slide');
-    const slideW = (allSlides[0] as HTMLElement).offsetWidth;
-    const cW = (track.parentElement as HTMLElement).offsetWidth;
-    return -i * (slideW + GAP) + (cW - slideW) / 2;
+    const vW = viewport!.offsetWidth;
+    const cW = cards[0].offsetWidth;
+    return (vW - cW) / 2 - i * (cW + GAP);
   }
 
-  // Set initial position (no animation)
-  track.style.transition = 'none';
-  track.style.transform = `translateX(${calcOffset(0)}px)`;
-
-  let busy = false;
-
-  function advance(): void {
-    if (busy) return;
-    busy = true;
-    idx++;
-    track.style.transition = 'transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-    track.style.transform = `translateX(${calcOffset(idx)}px)`;
-
-    setTimeout(() => {
-      // When we've shown all clones, snap back silently to the equivalent real slide
-      if (idx >= N) {
-        idx -= N;
-        track.style.transition = 'none';
-        track.style.transform = `translateX(${calcOffset(idx)}px)`;
-      }
-      busy = false;
-    }, 820);
+  function goTo(i: number, animate = true): void {
+    cards[cur].classList.remove('active');
+    dotEls[cur]?.classList.remove('active');
+    cur = ((i % N) + N) % N;
+    cards[cur].classList.add('active');
+    dotEls[cur]?.classList.add('active');
+    track!.style.transition = animate
+      ? 'transform 0.65s cubic-bezier(0.77, 0, 0.175, 1)'
+      : 'none';
+    track!.style.transform = `translateX(${calcOffset(cur)}px)`;
   }
 
-  // Auto-scroll: start 1s after this function is called
-  setTimeout(() => setInterval(advance, 3500), 1000);
+  goTo(0, false);
+
+  dotEls.forEach((dot, i) => {
+    dot.addEventListener('click', () => { goTo(i); resetAuto(); });
+  });
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => { if (i !== cur) { goTo(i); resetAuto(); } });
+  });
+
+  function resetAuto(): void {
+    clearInterval(autoId);
+    autoId = window.setInterval(() => goTo(cur + 1), 4000);
+  }
+  resetAuto();
+
+  window.addEventListener('resize', () => {
+    track!.style.transition = 'none';
+    track!.style.transform  = `translateX(${calcOffset(cur)}px)`;
+  });
 }
 
 // ── Bootstrap ─────────────────────────────────────────────────
