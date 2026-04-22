@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
   /* ── Light mode palette ───────────────────────────────── */
@@ -19,7 +19,7 @@
 
   /* ── Typography ───────────────────────────────────────── */
   --font-main:    'DM Sans', sans-serif;
-  --font-display: 'Fraunces', serif;
+  --font-display: 'Poppins', sans-serif;
 
   /* ── Motion ───────────────────────────────────────────── */
   --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);

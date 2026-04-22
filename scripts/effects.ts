@@ -148,18 +148,12 @@ export function initThemeToggle(): void {
   const html = document.documentElement;
   if (!btn) return;
 
-  // Restore saved preference
-  const saved = localStorage.getItem('theme');
-  if (saved === 'dark') html.setAttribute('data-theme', 'dark');
-
   btn.addEventListener('click', () => {
     const isDark = html.getAttribute('data-theme') === 'dark';
     if (isDark) {
       html.removeAttribute('data-theme');
-      localStorage.removeItem('theme');
     } else {
       html.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
     }
   });
 }

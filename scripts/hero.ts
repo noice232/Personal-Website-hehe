@@ -105,10 +105,13 @@ function initSlideshow(): void {
     const prev = current;
     current = (current + 1) % slides.length;
 
+    // Old slide fades out to the left
     slides[prev].classList.add('slide-exiting');
     slides[prev].classList.remove('slide-active');
+    // New slide fades in from the right (CSS default: translateX(28px) → translateX(0))
     slides[current].classList.add('slide-active');
 
+    // After transition, snap exited slide back to right-side default
     setTimeout(() => {
       const el = slides[prev];
       el.style.transitionDuration = '0ms';
@@ -116,7 +119,7 @@ function initSlideshow(): void {
       requestAnimationFrame(() => {
         requestAnimationFrame(() => { el.style.transitionDuration = ''; });
       });
-    }, 520);
+    }, 870);
   }
 
   function prev(): void {
@@ -124,14 +127,20 @@ function initSlideshow(): void {
     const old = current;
     current = (current - 1 + slides.length) % slides.length;
 
+    // Old slide fades out to the right (just remove active — CSS default is translateX(28px) opacity 0)
     slides[old].classList.remove('slide-active');
-    slides[current].style.transitionDuration = '0ms';
-    slides[current].classList.remove('slide-exiting');
-    slides[current].style.transform = 'translateX(-100%)';
+
+    // New slide enters from the left: override default starting position to -28px
+    slides[current].style.transition = 'none';
+    slides[current].style.transform = 'translateX(-28px)';
+    slides[current].style.opacity = '0';
+
     requestAnimationFrame(() => {
+      slides[current].getBoundingClientRect(); // force reflow so browser commits the above
       requestAnimationFrame(() => {
-        slides[current].style.transitionDuration = '';
+        slides[current].style.transition = '';
         slides[current].style.transform = '';
+        slides[current].style.opacity = '';
         slides[current].classList.add('slide-active');
       });
     });

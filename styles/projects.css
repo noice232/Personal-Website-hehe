@@ -180,8 +180,9 @@
   color: var(--color-text-secondary);
   flex: 1;
   overflow: hidden;
-  max-height: 3.5em; /* ~2 lines */
+  max-height: 3.5em;
   transition: max-height 0.45s ease;
+  text-align: justify;
 }
 
 .project-card:hover .project-desc,

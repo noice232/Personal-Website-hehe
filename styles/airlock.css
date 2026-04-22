@@ -15,7 +15,7 @@
   top: 0;
   width: 50%;
   height: 100%;
-  background: #111111;
+  background: #0a0a0a;
   display: flex;
   align-items: center;
   /* No CSS transition — JS drives animation via requestAnimationFrame */
@@ -38,10 +38,10 @@
 /* "Ya" + "sh" brand letters that meet at center seam */
 #airlock-ya,
 #airlock-sh {
-  font-family: var(--font-display, 'Fraunces', serif);
+  font-family: var(--font-display, 'Poppins', sans-serif);
   font-size: clamp(3rem, 8vw, 7rem);
   font-weight: 700;
-  color: #c8a87a;
+  color: #ffffff;
   line-height: 1;
   display: block;
   opacity: 0;
@@ -59,12 +59,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, 3.8rem);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
-  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-family: var(--font-main, 'DM Sans', sans-serif);
+  font-size: clamp(0.7rem, 1.2vw, 0.85rem);
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #d4b896;
+  color: rgba(255, 255, 255, 0.45);
   opacity: 0;
   white-space: nowrap;
   transition: opacity 120ms ease;
@@ -121,10 +121,10 @@ html, body {
   gap: 0.5rem;
   padding: 0.55rem 1.4rem;
   background: transparent;
-  border: 1px solid rgba(200, 168, 122, 0.3);
+  border: 1px solid var(--color-border);
   border-radius: 100px;
-  color: var(--color-text-muted);
-  font-family: var(--font-body, 'DM Sans', sans-serif);
+  color: var(--color-text-secondary);
+  font-family: var(--font-main, 'DM Sans', sans-serif);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -135,6 +135,6 @@ html, body {
 }
 
 .section-next-btn:hover {
-  color: var(--color-accent, #c8a87a);
-  border-color: var(--color-accent, #c8a87a);
+  color: var(--color-accent);
+  border-color: var(--color-border-accent);
 }

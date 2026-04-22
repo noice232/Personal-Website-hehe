@@ -51,6 +51,7 @@
   color: var(--color-text-secondary);
   max-width: 62ch;
   margin-bottom: 16px;
+  text-align: justify;
 }
 
 #about p:last-of-type { margin-bottom: 28px; }
