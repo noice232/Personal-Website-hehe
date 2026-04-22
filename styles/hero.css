@@ -17,12 +17,12 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(at 15% 20%, rgba(255, 107, 53, 0.16) 0px, transparent 45%),
-    radial-gradient(at 55% 12%, rgba(255, 179, 0,  0.13) 0px, transparent 45%),
-    radial-gradient(at 85% 55%, rgba(255, 140, 0,  0.13) 0px, transparent 45%),
-    radial-gradient(at 40% 75%, rgba(255, 69,  0,  0.11) 0px, transparent 45%),
-    radial-gradient(at 70% 85%, rgba(255, 200, 50, 0.09) 0px, transparent 45%),
-    radial-gradient(at 25% 55%, rgba(200, 50,  0,  0.09) 0px, transparent 45%);
+    radial-gradient(at 15% 20%, rgba(99,  102, 241, 0.16) 0px, transparent 45%),
+    radial-gradient(at 55% 12%, rgba(139, 92,  246, 0.13) 0px, transparent 45%),
+    radial-gradient(at 85% 55%, rgba(167, 139, 250, 0.13) 0px, transparent 45%),
+    radial-gradient(at 40% 75%, rgba(99,  102, 241, 0.11) 0px, transparent 45%),
+    radial-gradient(at 70% 85%, rgba(196, 181, 253, 0.09) 0px, transparent 45%),
+    radial-gradient(at 25% 55%, rgba(79,  70,  229, 0.09) 0px, transparent 45%);
   background-size: 100% 100%;
   animation: emberBreath 9s ease-in-out infinite;
   transition: opacity 1.8s ease-out;
@@ -31,13 +31,13 @@
 
 [data-theme="dark"] #hero-gradient {
   background:
-    radial-gradient(at 20% 25%, rgba(255, 80,  0, 0.55) 0px, transparent 50%),
-    radial-gradient(at 80% 10%, rgba(255, 140, 0, 0.40) 0px, transparent 50%),
-    radial-gradient(at 5%  70%, rgba(255, 60,  0, 0.50) 0px, transparent 50%),
-    radial-gradient(at 75% 65%, rgba(255, 120, 0, 0.35) 0px, transparent 50%),
-    radial-gradient(at 45% 90%, rgba(200, 50,  0, 0.45) 0px, transparent 50%),
-    radial-gradient(at 55% 45%, rgba(255, 200, 50,0.40) 0px, transparent 40%),
-    #0D0D0D;
+    radial-gradient(at 20% 25%, rgba(99,  102, 241, 0.45) 0px, transparent 50%),
+    radial-gradient(at 80% 10%, rgba(139, 92,  246, 0.35) 0px, transparent 50%),
+    radial-gradient(at 5%  70%, rgba(79,  70,  229, 0.40) 0px, transparent 50%),
+    radial-gradient(at 75% 65%, rgba(167, 139, 250, 0.30) 0px, transparent 50%),
+    radial-gradient(at 45% 90%, rgba(109, 40,  217, 0.35) 0px, transparent 50%),
+    radial-gradient(at 55% 45%, rgba(196, 181, 253, 0.35) 0px, transparent 40%),
+    #08080F;
 }
 
 #hero-gradient.settling {
@@ -56,11 +56,11 @@
   pointer-events: none;
   mix-blend-mode: multiply;
   background:
-    radial-gradient(at 60% 20%, rgba(255, 120, 0,  0.12) 0px, transparent 45%),
-    radial-gradient(at 20% 55%, rgba(255, 160, 0,  0.10) 0px, transparent 45%),
-    radial-gradient(at 80% 75%, rgba(220, 80,  0,  0.11) 0px, transparent 45%),
-    radial-gradient(at 40% 15%, rgba(255, 200, 60, 0.12) 0px, transparent 45%),
-    radial-gradient(at 75% 45%, rgba(200, 60,  0,  0.10) 0px, transparent 45%);
+    radial-gradient(at 60% 20%, rgba(99,  102, 241, 0.12) 0px, transparent 45%),
+    radial-gradient(at 20% 55%, rgba(139, 92,  246, 0.10) 0px, transparent 45%),
+    radial-gradient(at 80% 75%, rgba(79,  70,  229, 0.11) 0px, transparent 45%),
+    radial-gradient(at 40% 15%, rgba(167, 139, 250, 0.12) 0px, transparent 45%),
+    radial-gradient(at 75% 45%, rgba(109, 40,  217, 0.10) 0px, transparent 45%);
   background-size: 100% 100%;
   animation: emberBreath2 13s ease-in-out infinite;
   opacity: 0.8;
@@ -98,11 +98,11 @@
   background: linear-gradient(
     110deg,
     var(--color-gradient-mid)    0%,
-    #FFD070                      12%,
+    #C4B5FD                      12%,
     #FFFFFF                      28%,
-    #FFF8F0                      50%,
+    #F0F0FF                      50%,
     #FFFFFF                      72%,
-    #FFD070                      88%,
+    #C4B5FD                      88%,
     var(--color-gradient-mid)    100%
   );
   background-size: 300% 100%;
@@ -168,12 +168,12 @@
 .btn-primary {
   background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
   color: #fff;
-  box-shadow: 0 4px 20px rgba(255, 69, 0, 0.35);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
   will-change: transform;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 8px 32px rgba(255, 69, 0, 0.5);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.5);
   filter: brightness(1.08);
 }
 
@@ -233,7 +233,7 @@
   font-weight: 500;
   color: var(--color-text-secondary);
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(255, 69, 0, 0.10);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.10);
   opacity: 0;
   transition: opacity 0.5s var(--ease-out);
 }

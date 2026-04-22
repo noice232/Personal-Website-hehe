@@ -8,6 +8,7 @@ const navLinks   = document.querySelectorAll<HTMLAnchorElement>('#nav-links a');
 const hamburger  = document.getElementById('hamburger')   as HTMLButtonElement | null;
 const mobileMenu = document.getElementById('nav-mobile-menu') as HTMLElement | null;
 const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('#nav-mobile-menu a');
+const navLogo    = document.getElementById('nav-logo')    as HTMLElement | null;
 
 // ── Show navbar (called by hero.ts after settle) ────────────
 export function showNav(): void {
@@ -54,3 +55,15 @@ function initHamburger(): void {
 }
 
 initHamburger();
+
+// ── YS logo click circle ─────────────────────────────────────
+if (navLogo) {
+  navLogo.addEventListener('click', () => {
+    navLogo.classList.remove('logo-clicked');
+    void navLogo.offsetWidth; // force reflow to restart animation
+    navLogo.classList.add('logo-clicked');
+    navLogo.addEventListener('animationend', () => {
+      navLogo.classList.remove('logo-clicked');
+    }, { once: true });
+  });
+}

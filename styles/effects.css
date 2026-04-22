@@ -42,7 +42,7 @@
   transform: translate(-50%, -50%);
   background: radial-gradient(
     circle at center,
-    rgba(255, 69, 0, 0.055) 0%,
+    rgba(99, 102, 241, 0.055) 0%,
     transparent 70%
   );
   transition: left 0.12s linear, top 0.12s linear;
@@ -52,7 +52,7 @@
 [data-theme="dark"] #spotlight {
   background: radial-gradient(
     circle at center,
-    rgba(255, 100, 0, 0.08) 0%,
+    rgba(129, 140, 248, 0.10) 0%,
     transparent 70%
   );
 }

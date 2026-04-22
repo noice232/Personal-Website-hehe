@@ -9,6 +9,10 @@
   align-items: center;
 }
 
+#about > * {
+  flex-shrink: 0;
+}
+
 #about-content {
   display: grid;
   grid-template-columns: 1fr 320px;
@@ -153,7 +157,7 @@
 /* ── Stats row ───────────────────────────────────────────── */
 #stats-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   margin-top: 72px;
   width: 100%;

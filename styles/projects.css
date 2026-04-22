@@ -59,7 +59,7 @@
   grid-area: feat;
   padding: 36px;
   background:
-    linear-gradient(135deg, rgba(255, 69, 0, 0.06) 0%, rgba(255, 179, 0, 0.04) 100%),
+    linear-gradient(135deg, rgba(99, 102, 241, 0.06) 0%, rgba(139, 92, 246, 0.04) 100%),
     var(--color-surface);
   position: relative;
   overflow: hidden;
@@ -67,7 +67,7 @@
 
 [data-theme="dark"] .project-featured {
   background:
-    linear-gradient(135deg, rgba(255, 69, 0, 0.12) 0%, rgba(255, 179, 0, 0.06) 100%),
+    linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.06) 100%),
     var(--color-surface);
 }
 
@@ -118,8 +118,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-accent);
-  background: rgba(255, 69, 0, 0.08);
-  border: 1px solid rgba(255, 69, 0, 0.2);
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
   padding: 4px 12px;
   border-radius: var(--border-radius-pill);
   margin-bottom: 4px;
@@ -208,16 +208,16 @@
   font-weight: 500;
   padding: 4px 10px;
   border-radius: var(--border-radius-pill);
-  background: rgba(255, 69, 0, 0.07);
+  background: rgba(99, 102, 241, 0.07);
   color: var(--color-accent);
-  border: 1px solid rgba(255, 69, 0, 0.18);
+  border: 1px solid rgba(99, 102, 241, 0.18);
   letter-spacing: 0.02em;
   transition: background 0.2s, border-color 0.2s;
 }
 
 .project-card:hover .tag {
-  background: rgba(255, 69, 0, 0.12);
-  border-color: rgba(255, 69, 0, 0.3);
+  background: rgba(99, 102, 241, 0.12);
+  border-color: rgba(99, 102, 241, 0.3);
 }
 
 /* Multi-link row (Urban Marble, etc.) */
@@ -244,7 +244,7 @@
 }
 
 .project-link-pill:hover {
-  background: rgba(255, 69, 0, 0.08);
+  background: rgba(99, 102, 241, 0.08);
 }
 
 /* ── Responsive ──────────────────────────────────────────── */

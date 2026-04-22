@@ -2,25 +2,25 @@
 
 :root {
   /* ── Gradient accent ──────────────────────────────────── */
-  --color-gradient-start: #FF4500;
-  --color-gradient-mid:   #FF7A00;
-  --color-gradient-end:   #FFB300;
+  --color-gradient-start: #6366F1;
+  --color-gradient-mid:   #8B5CF6;
+  --color-gradient-end:   #A78BFA;
 
   /* ── Light mode palette ───────────────────────────────── */
-  --color-bg:             #FFFAF4;
-  --color-surface:        rgba(255, 255, 255, 0.72);
+  --color-bg:             #F8F9FF;
+  --color-surface:        rgba(248, 249, 255, 0.72);
   --color-surface-solid:  #FFFFFF;
-  --color-surface-hover:  rgba(255, 248, 240, 0.9);
-  --color-text-primary:   #1A1A1A;
-  --color-text-secondary: #5A5A5A;
-  --color-accent:         #FF4500;
+  --color-surface-hover:  rgba(238, 240, 255, 0.9);
+  --color-text-primary:   #0F0F1A;
+  --color-text-secondary: #5A5A7A;
+  --color-accent:         #6366F1;
   --color-border:         rgba(0, 0, 0, 0.08);
-  --color-border-accent:  rgba(255, 69, 0, 0.22);
+  --color-border-accent:  rgba(99, 102, 241, 0.22);
   --dot-color:            rgba(0, 0, 0, 0.10);
 
   /* ── Shadows ──────────────────────────────────────────── */
   --shadow-card:       0 2px 20px rgba(0, 0, 0, 0.06);
-  --shadow-card-hover: 0 16px 48px rgba(255, 69, 0, 0.14);
+  --shadow-card-hover: 0 16px 48px rgba(99, 102, 241, 0.16);
 
   /* ── Typography ───────────────────────────────────────── */
   --font-main:    'DM Sans', sans-serif;
@@ -42,17 +42,17 @@
 
 /* ── Dark mode overrides ────────────────────────────────── */
 [data-theme="dark"] {
-  --color-bg:             #0D0D0D;
-  --color-surface:        rgba(26, 26, 26, 0.72);
-  --color-surface-solid:  #1A1A1A;
-  --color-surface-hover:  rgba(34, 34, 34, 0.9);
-  --color-text-primary:   #F5F5F5;
-  --color-text-secondary: #A0A0A0;
+  --color-bg:             #08080F;
+  --color-surface:        rgba(18, 18, 30, 0.72);
+  --color-surface-solid:  #12121E;
+  --color-surface-hover:  rgba(26, 26, 42, 0.9);
+  --color-text-primary:   #F0F0FF;
+  --color-text-secondary: #9898B8;
   --color-border:         rgba(255, 255, 255, 0.07);
-  --color-border-accent:  rgba(255, 69, 0, 0.30);
+  --color-border-accent:  rgba(129, 140, 248, 0.30);
   --dot-color:            rgba(255, 255, 255, 0.055);
   --shadow-card:          0 2px 20px rgba(0, 0, 0, 0.45);
-  --shadow-card-hover:    0 16px 48px rgba(255, 69, 0, 0.22);
+  --shadow-card-hover:    0 16px 48px rgba(129, 140, 248, 0.25);
 }
 
 body {
