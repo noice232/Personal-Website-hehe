@@ -47,7 +47,11 @@ function syncMobileBlendPos(): void {
 // ── Main animation sequence ───────────────────────────────────
 
 async function runHeroAnimation(): Promise<void> {
-  await delay(300);
+  // Mobile carousel init early (desktop synced with tagline in settleHero)
+  if (window.innerWidth <= 900) setTimeout(() => initHeroCarousel(), 200);
+
+  // Text fades in
+  await delay(750);
 
   // Mobile: position blend element before making it visible
   if (window.innerWidth <= 900) syncMobileBlendPos();
@@ -89,17 +93,18 @@ function settleHero(): void {
       });
     });
 
-    // 2. Photo slides in
-    setTimeout(() => heroRight.classList.add('slide-in'), 400);
-
-    // 3. Position tagline/buttons below text after transition
+    // 2. Tagline, carousel, and photo all appear together
     setTimeout(() => {
       const textRect = heroText.getBoundingClientRect();
       const heroRect = heroEl.getBoundingClientRect();
       heroLeftExtras.style.top = `${textRect.bottom - heroRect.top + 20}px`;
       heroLeftExtras.classList.add('active');
-      // Create tagline blend overlay NOW — after position is settled
       createTaglineOverlay();
+
+      // Carousel + photo in sync with tagline reveal
+      initHeroCarousel();
+      heroRight.classList.add('slide-in');
+      if (heroBadge) heroBadge.classList.add('visible');
     }, 920);
   }
   if (isMobile) {
@@ -116,11 +121,6 @@ function settleHero(): void {
   // 4. Navbar
   setTimeout(() => showNav(), isMobile ? 300 : 900);
 
-  // 5. Carousel + badge
-  setTimeout(() => {
-    initHeroCarousel();
-    if (heroBadge && !isMobile) heroBadge.classList.add('visible');
-  }, isMobile ? 500 : 1200);
 }
 
 // ── Hero carousel ─────────────────────────────────────────────
@@ -184,8 +184,12 @@ window.addEventListener('section-change', (e: Event) => {
   if (!heroTitleBlend) return;
   const targetId = (e as CustomEvent<{ id: string }>).detail?.id;
   if (targetId === 'hero') {
-    heroTitleBlend.style.transition = 'opacity 0.5s var(--ease-out)';
-    heroTitleBlend.style.opacity    = '1';
+    // Airlock: close 550ms + hold 1500ms + open 500ms = 2550ms total.
+    // Fade in after doors are fully open.
+    setTimeout(() => {
+      heroTitleBlend.style.transition = 'opacity 0.5s var(--ease-out)';
+      heroTitleBlend.style.opacity    = '1';
+    }, 2100);
   } else {
     heroTitleBlend.style.transition = 'opacity 0.25s ease-in';
     heroTitleBlend.style.opacity    = '0';
