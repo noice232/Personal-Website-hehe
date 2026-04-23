@@ -259,7 +259,15 @@ function initResumeButtons(): void {
 }
 
 // ── Init all effects ────────────────────────────────────────
+// ── Mobile dark mode default ────────────────────────────────
+function applyMobileDarkDefault(): void {
+  if (window.innerWidth <= 900) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+}
+
 export function initAllEffects(): void {
+  applyMobileDarkDefault();
   initThemeToggle();
   initScrollProgress();
   initCardTilt();
