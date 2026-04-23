@@ -34,10 +34,24 @@ function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// ── Mobile blend position sync ────────────────────────────────
+// On mobile the blend element is position:fixed so must track #hero-text.
+
+function syncMobileBlendPos(): void {
+  if (!heroTitleBlend || window.innerWidth > 900) return;
+  const rect = heroText.getBoundingClientRect();
+  heroTitleBlend.style.top      = `${rect.top}px`;
+  heroTitleBlend.style.fontSize = getComputedStyle(heroText).fontSize;
+}
+
 // ── Main animation sequence ───────────────────────────────────
 
 async function runHeroAnimation(): Promise<void> {
   await delay(300);
+
+  // Mobile: position blend element before making it visible
+  if (window.innerWidth <= 900) syncMobileBlendPos();
+
   heroWords.style.animation = 'fadeIn 0.9s var(--ease-out) forwards';
   if (heroTitleBlend) {
     heroTitleBlend.style.transition = 'opacity 0.9s var(--ease-out)';
@@ -88,7 +102,11 @@ function settleHero(): void {
       createTaglineOverlay();
     }, 920);
   }
-  // On mobile: CSS handles layout, content already visible via !important overrides
+  if (isMobile) {
+    // Keep blend element tracking hero-text as user scrolls within the hero section
+    heroEl.addEventListener('scroll', syncMobileBlendPos, { passive: true });
+    window.addEventListener('resize', () => requestAnimationFrame(syncMobileBlendPos));
+  }
 
   // 4. Navbar
   setTimeout(() => showNav(), isMobile ? 300 : 900);

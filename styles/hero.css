@@ -389,7 +389,15 @@
   #hero-tagline { max-width: 100%; }
   #hero-cta-buttons { justify-content: center; }
 
-  #hero-title-blend { display: none; }
+  /* Blend element visible on mobile — JS sets top/width to track #hero-text */
+  #hero-title-blend {
+    white-space: normal;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
 
-  .hero-word { color: var(--color-text-primary); }
+  /* Words become transparent — #hero-title-blend provides the visual */
+  .hero-word { color: transparent; }
 }
