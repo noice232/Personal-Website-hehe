@@ -94,6 +94,14 @@ html, body {
   overflow: hidden;
 }
 
+@media (max-width: 900px) {
+  /* dvh = dynamic viewport height — excludes mobile browser chrome (URL bar, nav bar).
+     Prevents section content being clipped behind browser UI. */
+  #sections-wrapper {
+    height: 100dvh;
+  }
+}
+
 /* ── Next-section footer ─────────────────────────────────── */
 
 .section-nav-footer {
