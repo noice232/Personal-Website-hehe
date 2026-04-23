@@ -68,6 +68,11 @@
   flex-shrink: 0;
 }
 
+/* Monochromatic simpleicons — invert in dark mode */
+[data-theme="dark"] .skill-tag img.si {
+  filter: invert(1);
+}
+
 /* ── Legend ──────────────────────────────────────────────── */
 #skills-legend {
   display: flex;

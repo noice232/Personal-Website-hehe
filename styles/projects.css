@@ -243,6 +243,29 @@
   background: rgba(26, 95, 232, 0.08);
 }
 
+/* ── Hover thumbnail preview (position:fixed, JS-positioned) ── */
+#link-thumb-preview {
+  position: fixed;
+  width: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--color-border);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 9999;
+  background: var(--color-surface-solid);
+}
+
+#link-thumb-preview.visible { opacity: 1; }
+
+#link-thumb-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 900px) {
   #projects-grid {

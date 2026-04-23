@@ -14,9 +14,10 @@ import { showNav }        from './nav';
 import './scroll';
 import './cursor';
 import './wheel-nav';
-import { initAllEffects } from './effects';
-import { initAirlock }    from './airlock';
+import { initAllEffects }   from './effects';
+import { initAirlock }      from './airlock';
 import { initTextBlend, createTaglineOverlay } from './text-blend';
+import { initLinkPreviews } from './link-preview';
 
 // ── Element refs ─────────────────────────────────────────────
 
@@ -56,14 +57,32 @@ function syncMobileBlendPos(): void {
   heroTitleBlend.style.fontSize = getComputedStyle(heroText).fontSize;
 }
 
+// ── Carousel image preload ────────────────────────────────────
+// Decodes photos off the main thread so first-paint of the carousel
+// doesn't stall the compositor when slide-in fires.
+
+function preloadCarouselImages(): void {
+  ['assets/yash-niagra.jpg', 'assets/ducks.jpg'].forEach(src => {
+    const img = new Image();
+    img.src = src;
+    img.decode().catch(() => {});
+  });
+}
+
 // ── Main animation sequence ───────────────────────────────────
 
 async function runHeroAnimation(): Promise<void> {
-  // Mobile carousel init early (desktop synced with tagline in settleHero)
-  if (window.innerWidth <= 900) setTimeout(() => initHeroCarousel(), 200);
+  // Kick off image decoding and carousel layout immediately — well before
+  // slide-in fires — so neither decode nor offsetWidth reads happen mid-animation.
+  preloadCarouselImages();
+  if (window.innerWidth <= 900) {
+    setTimeout(() => initHeroCarousel(), 100);
+  } else {
+    initHeroCarousel();
+  }
 
   // Text fades in
-  await delay(750);
+  await delay(300);
 
   // Mobile: position blend element before making it visible
   if (window.innerWidth <= 900) syncMobileBlendPos();
@@ -82,11 +101,13 @@ function settleHero(): void {
   const isMobile = window.innerWidth <= 900;
 
   if (!isMobile) {
-    // 1. Slide hero text center → left, shrinking font (transform-only = compositor thread, no reflow)
-    heroText.style.transition = [
-      'transform 0.9s var(--ease-out)',
-      'font-size 0.9s var(--ease-out)',
-    ].join(', ');
+    // 1. Set the target font-size instantly — heroText is color:transparent so there
+    //    is no visible flash. Flushing layout now means the upcoming rAF only needs
+    //    to animate transform (compositor thread, zero reflow cost).
+    heroText.style.fontSize = 'clamp(1.8rem, 3.5vw, 3rem)';
+    void heroText.getBoundingClientRect(); // flush reflow synchronously
+
+    heroText.style.transition = 'transform 0.9s var(--ease-out)';
     if (heroTitleBlend) {
       heroTitleBlend.style.transition = [
         'transform 0.9s var(--ease-out)',
@@ -97,7 +118,6 @@ function settleHero(): void {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         heroText.style.transform = 'translate(10vw, -50%)';
-        heroText.style.fontSize  = 'clamp(1.8rem, 3.5vw, 3rem)';
         if (heroTitleBlend) {
           heroTitleBlend.style.transform = 'translate(10vw, -50%)';
           heroTitleBlend.style.fontSize  = 'clamp(1.8rem, 3.5vw, 3rem)';
@@ -112,8 +132,7 @@ function settleHero(): void {
       heroNavFooter?.classList.add('active');
       createTaglineOverlay();
 
-      // Carousel + photo in sync with tagline reveal
-      initHeroCarousel();
+      // Reveal the pre-initialized carousel (layout + images already ready)
       heroRight.classList.add('slide-in');
       if (heroBadge) heroBadge.classList.add('visible');
 
@@ -225,5 +244,6 @@ requestAnimationFrame(() => {
   initAllEffects();
   initAirlock();
   initTextBlend();
+  initLinkPreviews();
   runHeroAnimation();
 });
