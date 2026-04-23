@@ -25,6 +25,7 @@ const heroText       = document.getElementById('hero-text')        as HTMLElemen
 const heroWords      = document.getElementById('hero-words')       as HTMLElement;
 const heroRight      = document.getElementById('hero-right')       as HTMLElement;
 const heroLeftExtras = document.getElementById('hero-left-extras') as HTMLElement;
+const heroNavFooter  = heroEl.querySelector<HTMLElement>('.section-nav-footer--abs');
 const heroBadge      = document.getElementById('hero-image-badge') as HTMLElement | null;
 const heroTitleBlend = document.getElementById('hero-title-blend') as HTMLElement | null;
 
@@ -108,6 +109,7 @@ function settleHero(): void {
     setTimeout(() => {
       positionExtras();
       heroLeftExtras.classList.add('active');
+      heroNavFooter?.classList.add('active');
       createTaglineOverlay();
 
       // Carousel + photo in sync with tagline reveal
@@ -208,10 +210,12 @@ window.addEventListener('section-change', (e: Event) => {
     setTimeout(() => {
       heroTitleBlend.style.transition = 'opacity 0.5s var(--ease-out)';
       heroTitleBlend.style.opacity    = '1';
+      heroNavFooter?.classList.add('active');
     }, 2100);
   } else {
     heroTitleBlend.style.transition = 'opacity 0.25s ease-in';
     heroTitleBlend.style.opacity    = '0';
+    heroNavFooter?.classList.remove('active');
   }
 });
 

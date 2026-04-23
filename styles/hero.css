@@ -107,17 +107,17 @@
 .btn-primary {
   background: var(--color-accent);
   color: #fff;
-  box-shadow: 0 4px 20px rgba(26, 95, 232, 0.30);
+  box-shadow: 0 0 0 2.5px rgba(255, 255, 255, 0.55), 0 4px 20px rgba(26, 95, 232, 0.30);
   will-change: transform;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 8px 32px rgba(26, 95, 232, 0.45);
+  box-shadow: 0 0 0 2.5px rgba(255, 255, 255, 0.55), 0 8px 32px rgba(26, 95, 232, 0.45);
   filter: brightness(1.08);
 }
 
 .btn-secondary {
-  background: transparent;
+  background: var(--color-surface-solid);
   color: var(--color-text-primary);
   border: 1.5px solid rgba(0, 0, 0, 0.18);
   will-change: transform;
@@ -413,4 +413,5 @@
     padding: 0;
     pointer-events: auto;
   }
+
 }
