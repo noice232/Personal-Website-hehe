@@ -86,7 +86,6 @@ function init(): void {
     time:        { value: 0.0 },
     mouse:       { value: new THREE.Vector2(window.innerWidth / 2, window.innerHeight / 2) },
     resolution:  { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-    // #1a5fe8 → rgb(26, 95, 232) / 255
     accentColor: { value: new THREE.Vector3(26 / 255, 95 / 255, 232 / 255) },
     isDarkMode:  { value: 0.0 },
   };
@@ -112,16 +111,6 @@ function init(): void {
     targetMouse.y = window.innerHeight - e.clientY;
   });
 
-  // Scroll-based fade: starts fading at 70% of hero height, gone at 100%
-  const heroEl = document.getElementById('hero');
-  window.addEventListener('scroll', () => {
-    if (!heroEl) return;
-    const heroHeight = heroEl.offsetHeight;
-    const fadeStart  = heroHeight * 0.7;
-    const fadeEnd    = heroHeight;
-    const raw        = (window.scrollY - fadeStart) / (fadeEnd - fadeStart);
-    canvas.style.opacity = String(1 - Math.max(0, Math.min(1, raw)));
-  }, { passive: true });
 
   // Dark mode sync
   const syncTheme = (): void => {

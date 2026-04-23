@@ -15,7 +15,8 @@ import './scroll';
 import './cursor';
 import './wheel-nav';
 import { initAllEffects } from './effects';
-import { initAirlock } from './airlock';
+import { initAirlock }    from './airlock';
+import { initTextBlend, createTaglineOverlay } from './text-blend';
 
 // ── Element refs ─────────────────────────────────────────────
 
@@ -25,6 +26,7 @@ const heroWords      = document.getElementById('hero-words')       as HTMLElemen
 const heroRight      = document.getElementById('hero-right')       as HTMLElement;
 const heroLeftExtras = document.getElementById('hero-left-extras') as HTMLElement;
 const heroBadge      = document.getElementById('hero-image-badge') as HTMLElement | null;
+const heroTitleBlend = document.getElementById('hero-title-blend') as HTMLElement | null;
 
 // ── Helpers ──────────────────────────────────────────────────
 
@@ -37,6 +39,10 @@ function delay(ms: number): Promise<void> {
 async function runHeroAnimation(): Promise<void> {
   await delay(300);
   heroWords.style.animation = 'fadeIn 0.9s var(--ease-out) forwards';
+  if (heroTitleBlend) {
+    heroTitleBlend.style.transition = 'opacity 0.9s var(--ease-out)';
+    heroTitleBlend.style.opacity = '1';
+  }
 
   await delay(1200);
   settleHero();
@@ -51,11 +57,21 @@ function settleHero(): void {
       'transform 0.9s var(--ease-out)',
       'font-size 0.9s var(--ease-out)',
     ].join(', ');
+    if (heroTitleBlend) {
+      heroTitleBlend.style.transition = [
+        'transform 0.9s var(--ease-out)',
+        'font-size 0.9s var(--ease-out)',
+      ].join(', ');
+    }
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         heroText.style.transform = 'translate(10vw, -50%)';
         heroText.style.fontSize  = 'clamp(1.8rem, 3.5vw, 3rem)';
+        if (heroTitleBlend) {
+          heroTitleBlend.style.transform = 'translate(10vw, -50%)';
+          heroTitleBlend.style.fontSize  = 'clamp(1.8rem, 3.5vw, 3rem)';
+        }
       });
     });
 
@@ -68,6 +84,8 @@ function settleHero(): void {
       const heroRect = heroEl.getBoundingClientRect();
       heroLeftExtras.style.top = `${textRect.bottom - heroRect.top + 20}px`;
       heroLeftExtras.classList.add('active');
+      // Create tagline blend overlay NOW — after position is settled
+      createTaglineOverlay();
     }, 920);
   }
   // On mobile: CSS handles layout, content already visible via !important overrides
@@ -135,10 +153,27 @@ function initHeroCarousel(): void {
   });
 }
 
+// ── Show/hide blend title on section transitions ──────────────
+// The site uses airlock section switching (not window scroll), so
+// section-change is the only reliable signal for visibility.
+
+window.addEventListener('section-change', (e: Event) => {
+  if (!heroTitleBlend) return;
+  const targetId = (e as CustomEvent<{ id: string }>).detail?.id;
+  if (targetId === 'hero') {
+    heroTitleBlend.style.transition = 'opacity 0.5s var(--ease-out)';
+    heroTitleBlend.style.opacity    = '1';
+  } else {
+    heroTitleBlend.style.transition = 'opacity 0.25s ease-in';
+    heroTitleBlend.style.opacity    = '0';
+  }
+});
+
 // ── Bootstrap ─────────────────────────────────────────────────
 
 requestAnimationFrame(() => {
   initAllEffects();
   initAirlock();
+  initTextBlend();
   runHeroAnimation();
 });

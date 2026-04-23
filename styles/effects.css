@@ -36,6 +36,19 @@ body::after {
   90%        { transform: translate(-10%, 10%);  }
 }
 
+/* ── Body-level text exclusion blend overlays ────────────── */
+.text-blend-overlay {
+  position: fixed;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: exclusion;
+  color: #ffffff;
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+}
+
 /* ── Scroll progress bar ─────────────────────────────────── */
 #scroll-progress {
   position: fixed;
