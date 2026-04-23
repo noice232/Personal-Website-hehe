@@ -103,10 +103,10 @@
 /* Date label */
 .timeline-date {
   font-family: var(--font-main);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   color: var(--color-text-secondary);
   margin-bottom: 0.3rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -146,7 +146,8 @@
 
 .timeline-card p {
   font-family: var(--font-main);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
   line-height: 1.65;
   color: var(--color-text-secondary);
   margin-bottom: 0.75rem;

@@ -119,7 +119,8 @@
 /* Currently widget */
 #currently-widget .currently-item {
   font-family: var(--font-main);
-  font-size: 0.9rem;
+  font-size: 0.93rem;
+  font-weight: 500;
   color: var(--color-text-secondary);
   line-height: 1.5;
   padding: 5px 0;

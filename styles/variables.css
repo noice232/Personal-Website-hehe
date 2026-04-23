@@ -3,11 +3,11 @@
 :root {
   /* ── Light mode palette ───────────────────────────────── */
   --color-bg:             #fafaf8;
-  --color-surface:        rgba(250, 250, 248, 0.85);
+  --color-surface:        #FAFAF8;
   --color-surface-solid:  #FFFFFF;
-  --color-surface-hover:  rgba(240, 240, 238, 0.9);
+  --color-surface-hover:  #F0F0EE;
   --color-text-primary:   #0a0a0a;
-  --color-text-secondary: #5A5A7A;
+  --color-text-secondary: #1E1E3E;
   --color-accent:         #1a5fe8;
   --color-border:         rgba(0, 0, 0, 0.08);
   --color-border-accent:  rgba(26, 95, 232, 0.22);
@@ -36,11 +36,11 @@
 /* ── Dark mode overrides ────────────────────────────────── */
 [data-theme="dark"] {
   --color-bg:             #08080F;
-  --color-surface:        rgba(18, 18, 30, 0.72);
+  --color-surface:        #12121E;
   --color-surface-solid:  #12121E;
-  --color-surface-hover:  rgba(26, 26, 42, 0.9);
+  --color-surface-hover:  #1A1A2A;
   --color-text-primary:   #F0F0FF;
-  --color-text-secondary: #9898B8;
+  --color-text-secondary: #D4D4F0;
   --color-border:         rgba(255, 255, 255, 0.07);
   --color-border-accent:  rgba(74, 138, 244, 0.30);
   --dot-color:            rgba(255, 255, 255, 0.055);

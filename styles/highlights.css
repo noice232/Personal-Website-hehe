@@ -145,9 +145,10 @@
 
 .hl-desc {
   font-family: 'Courier New', 'Lucida Console', monospace;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.92);
   max-width: 520px;
 }
 

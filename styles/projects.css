@@ -175,7 +175,8 @@
 /* Description — truncated by default, expands on hover */
 .project-desc {
   font-family: var(--font-main);
-  font-size: 0.93rem;
+  font-size: 0.97rem;
+  font-weight: 500;
   line-height: 1.72;
   color: var(--color-text-secondary);
   flex: 1;
