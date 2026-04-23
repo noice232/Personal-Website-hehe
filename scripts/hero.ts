@@ -200,7 +200,9 @@ function initHeroCarousel(): void {
     clearInterval(autoId);
     autoId = window.setInterval(() => goTo(cur + 1), 4000);
   }
-  resetAuto();
+
+  // First slide lingers for 8s before rotation begins, then normal 4s cadence
+  setTimeout(() => resetAuto(), 2000);
 
   window.addEventListener('resize', () => {
     track!.style.transition = 'none';
