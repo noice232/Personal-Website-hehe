@@ -6,6 +6,7 @@
  *   - Direct <body> child, position: fixed, mix-blend-mode: exclusion
  *   - Original element becomes color: transparent (layout/a11y placeholder)
  *   - JS syncs overlay position to original on every scroll frame
+ *   - Works on both desktop and mobile
  */
 
 interface BlendEntry {
@@ -72,9 +73,6 @@ function addOverlay(original: HTMLElement, liveSync = false): void {
 }
 
 export function initTextBlend(): void {
-  // Skip on mobile — same pattern as #hero-title-blend { display: none }
-  if (window.innerWidth <= 900) return;
-
   const staticSelectors = [
     '.section-label',
     '#about h2',
@@ -90,18 +88,24 @@ export function initTextBlend(): void {
     document.querySelectorAll<HTMLElement>(sel).forEach((el) => addOverlay(el))
   );
 
-  // Keep all overlays pinned on scroll (internal section scroll) + resize
   const updateAll = (): void =>
     entries.forEach(({ original, overlay }) => syncPosition(original, overlay));
 
+  // Window scroll (desktop) + each section's internal scroll (mobile)
   window.addEventListener('scroll', updateAll, { passive: true });
+  document.querySelectorAll<HTMLElement>('#sections-wrapper > section').forEach((s) => {
+    s.addEventListener('scroll', updateAll, { passive: true });
+  });
+
   window.addEventListener('resize', () => requestAnimationFrame(updateAll));
+
+  // Re-sync after airlock section transitions
+  window.addEventListener('section-change', () => requestAnimationFrame(updateAll));
 }
 
 // Called from hero.ts after the hero animation has positioned the tagline,
 // so the overlay is created at the correct settled coordinates.
 export function createTaglineOverlay(): void {
-  if (window.innerWidth <= 900) return;
   const tagline = document.getElementById('hero-tagline');
   if (tagline) addOverlay(tagline, /* liveSync */ true);
 }

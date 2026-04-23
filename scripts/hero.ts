@@ -106,6 +106,11 @@ function settleHero(): void {
     // Keep blend element tracking hero-text as user scrolls within the hero section
     heroEl.addEventListener('scroll', syncMobileBlendPos, { passive: true });
     window.addEventListener('resize', () => requestAnimationFrame(syncMobileBlendPos));
+    // Create tagline overlay after a short delay so the flex layout has settled
+    setTimeout(() => {
+      heroLeftExtras.classList.add('active');
+      createTaglineOverlay();
+    }, 500);
   }
 
   // 4. Navbar
