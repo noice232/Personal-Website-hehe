@@ -400,4 +400,16 @@
 
   /* Words become transparent — #hero-title-blend provides the visual */
   .hero-word { color: transparent; }
+
+  /* About button: position:absolute bottom:0 lands below the fold in a scroll container.
+     Sticky keeps it anchored to the bottom of the visible viewport while scrolling. */
+  .section-nav-footer--abs {
+    position: sticky;
+    bottom: 16px;
+    left: auto;
+    right: auto;
+    order: 99;
+    padding: 0;
+    pointer-events: auto;
+  }
 }
