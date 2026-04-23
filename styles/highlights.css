@@ -118,10 +118,10 @@
 .hl-cat {
   display: block;
   font-family: var(--font-main);
-  font-size: 0.68rem;
-  font-weight: 500;
+  font-size: 0.72rem;
+  font-weight: 600;
   letter-spacing: 0.14em;
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.72);
   margin-bottom: 10px;
   text-transform: uppercase;
 }
@@ -138,15 +138,16 @@
 .hl-sub {
   font-family: var(--font-main);
   font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  font-weight: 500;
   color: #c8a96e;
   margin-bottom: 16px;
 }
 
 .hl-desc {
   font-family: 'Courier New', 'Lucida Console', monospace;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.85);
   max-width: 520px;
 }
 

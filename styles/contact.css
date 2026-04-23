@@ -48,7 +48,7 @@
   gap: 10px;
   font-family: var(--font-main);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text-secondary);
   background: var(--color-surface);
   backdrop-filter: blur(12px);
@@ -94,7 +94,7 @@
   font-family: var(--font-main);
   font-size: 0.8rem;
   color: var(--color-text-secondary);
-  opacity: 0.45;
+  opacity: 0.62;
   letter-spacing: 0.04em;
 }
 

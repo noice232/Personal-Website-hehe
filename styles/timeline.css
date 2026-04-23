@@ -103,7 +103,7 @@
 /* Date label */
 .timeline-date {
   font-family: var(--font-main);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--color-text-secondary);
   margin-bottom: 0.3rem;
   font-weight: 600;
@@ -116,14 +116,14 @@
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-family: var(--font-main);
   padding: 0.15rem 0.55rem;
   border-radius: var(--border-radius-pill);
   border: 1px solid var(--color-border-accent);
   color: var(--color-accent);
   margin-bottom: 0.55rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .timeline-card h3 {
@@ -146,7 +146,7 @@
 
 .timeline-card p {
   font-family: var(--font-main);
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   line-height: 1.65;
   color: var(--color-text-secondary);
   margin-bottom: 0.75rem;
@@ -163,8 +163,8 @@
 
 .timeline-tag {
   font-family: var(--font-main);
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 600;
   padding: 3px 10px;
   border-radius: var(--border-radius-pill);
   background: rgba(26, 95, 232, 0.07);
@@ -182,8 +182,8 @@
 
 .timeline-link {
   font-family: var(--font-main);
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.8rem;
+  font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
   display: inline-flex;

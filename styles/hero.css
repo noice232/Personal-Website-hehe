@@ -242,10 +242,10 @@
 .hero-hl-cat {
   display: block;
   font-family: var(--font-main);
-  font-size: 0.6rem;
-  font-weight: 500;
+  font-size: 0.65rem;
+  font-weight: 600;
   letter-spacing: 0.13em;
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.72);
   margin-bottom: 5px;
   text-transform: uppercase;
 }
@@ -261,7 +261,8 @@
 
 .hero-hl-sub {
   font-family: var(--font-main);
-  font-size: 0.72rem;
+  font-size: 0.76rem;
+  font-weight: 500;
   color: #c8a96e;
 }
 

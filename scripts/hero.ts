@@ -34,6 +34,17 @@ function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// ── Extras positioning ────────────────────────────────────────
+// Recalculated on resize/zoom so the gap stays visually constant.
+
+function positionExtras(): void {
+  if (window.innerWidth > 900) {
+    const textRect = heroText.getBoundingClientRect();
+    const heroRect = heroEl.getBoundingClientRect();
+    heroLeftExtras.style.top = `${textRect.bottom - heroRect.top + 20}px`;
+  }
+}
+
 // ── Mobile blend position sync ────────────────────────────────
 // On mobile the blend element is position:fixed so must track #hero-text.
 
@@ -95,9 +106,7 @@ function settleHero(): void {
 
     // 2. Tagline, carousel, and photo all appear together
     setTimeout(() => {
-      const textRect = heroText.getBoundingClientRect();
-      const heroRect = heroEl.getBoundingClientRect();
-      heroLeftExtras.style.top = `${textRect.bottom - heroRect.top + 20}px`;
+      positionExtras();
       heroLeftExtras.classList.add('active');
       createTaglineOverlay();
 
@@ -105,6 +114,8 @@ function settleHero(): void {
       initHeroCarousel();
       heroRight.classList.add('slide-in');
       if (heroBadge) heroBadge.classList.add('visible');
+
+      window.addEventListener('resize', positionExtras, { passive: true });
     }, 920);
   }
   if (isMobile) {
@@ -180,9 +191,17 @@ function initHeroCarousel(): void {
 // The site uses airlock section switching (not window scroll), so
 // section-change is the only reliable signal for visibility.
 
+const webglCanvas = document.getElementById('webgl-canvas') as HTMLElement | null;
+
 window.addEventListener('section-change', (e: Event) => {
-  if (!heroTitleBlend) return;
   const targetId = (e as CustomEvent<{ id: string }>).detail?.id;
+
+  // Dim the WebGL background outside the hero
+  if (webglCanvas) {
+    webglCanvas.style.opacity = targetId === 'hero' ? '1' : '0.5';
+  }
+
+  if (!heroTitleBlend) return;
   if (targetId === 'hero') {
     // Airlock: close 550ms + hold 1500ms + open 500ms = 2550ms total.
     // Fade in after doors are fully open.

@@ -175,7 +175,7 @@
 /* Description — truncated by default, expands on hover */
 .project-desc {
   font-family: var(--font-main);
-  font-size: 0.9rem;
+  font-size: 0.93rem;
   line-height: 1.72;
   color: var(--color-text-secondary);
   flex: 1;
@@ -199,8 +199,8 @@
 
 .tag {
   font-family: var(--font-main);
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 600;
   padding: 4px 10px;
   border-radius: var(--border-radius-pill);
   background: rgba(26, 95, 232, 0.07);
@@ -225,8 +225,8 @@
 
 .project-link-pill {
   font-family: var(--font-main);
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
   border: 1px solid var(--color-border-accent);
