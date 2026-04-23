@@ -66,14 +66,18 @@
   transform: translateY(-3px);
 }
 
-.contact-item svg {
+.contact-item svg,
+.contact-item img.si {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
   transition: transform 0.25s ease;
 }
 
-.contact-item:hover svg { transform: scale(1.15); }
+.contact-item:hover svg,
+.contact-item:hover img.si { transform: scale(1.15); }
+
+[data-theme="dark"] .contact-item img.si { filter: invert(1); }
 
 /* Resume download chip — solid background ensures legibility over canvas blob */
 .contact-item--resume {
