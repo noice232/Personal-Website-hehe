@@ -218,6 +218,10 @@
     grid-template-columns: repeat(2, 1fr);
     margin-top: 48px;
   }
+
+  #stats-row .stat-item:last-child {
+    grid-column: span 2;
+  }
 }
 
 @media (max-width: 480px) {
