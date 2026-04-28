@@ -242,7 +242,7 @@ export function initFooterYear(): void {
 
 // ── Resume buttons: open in new tab + trigger download ──────
 function initResumeButtons(): void {
-  const RESUME_URL = 'dist/assets/Yash_Resume_Doha_Bank.docx (1).pdf';
+  const RESUME_URL = 'assets/Yash_Resume_CA.pdf';
 
   document.querySelectorAll<HTMLElement>('.btn-resume, .contact-item--resume').forEach((el) => {
     el.addEventListener('click', (e) => {

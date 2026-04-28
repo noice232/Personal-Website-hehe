@@ -22,9 +22,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
-    "feat feat card2"
-    "card3 card4 card5"
-    "card6 card7 .";
+    "feat   feat   card2"
+    "card3  qfcra  qfcra"
+    "card4  card5  card6"
+    "card7  .      .";
   gap: 20px;
 }
 
@@ -125,11 +126,12 @@
 
 /* Grid areas for regular cards */
 .project-card[data-index="1"] { grid-area: card2; }
-.project-card[data-index="2"] { grid-area: card3; }
-.project-card[data-index="3"] { grid-area: card4; }
-.project-card[data-index="4"] { grid-area: card5; }
-.project-card[data-index="5"] { grid-area: card6; }
-.project-card[data-index="6"] { grid-area: card7; }
+.project-card[data-index="2"] { grid-area: qfcra; }
+.project-card[data-index="3"] { grid-area: card3; }
+.project-card[data-index="4"] { grid-area: card4; }
+.project-card[data-index="5"] { grid-area: card5; }
+.project-card[data-index="6"] { grid-area: card6; }
+.project-card[data-index="7"] { grid-area: card7; }
 
 /* ── Card internals ──────────────────────────────────────── */
 .project-card-header {
@@ -189,6 +191,26 @@
 .project-card:hover .project-desc,
 .project-featured .project-desc {
   max-height: 12em;
+}
+
+.project-card[data-index="2"]:hover .project-desc {
+  max-height: 40em;
+}
+
+/* Labelled list (used in QFCRA card) */
+.desc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.desc-label {
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-right: 4px;
 }
 
 /* Tags */
@@ -271,10 +293,11 @@
   #projects-grid {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "feat feat"
-      "card2 card3"
-      "card4 card5"
-      "card6 card7";
+      "feat   feat"
+      "card2  card3"
+      "qfcra  qfcra"
+      "card4  card5"
+      "card6  card7";
   }
 }
 
@@ -287,6 +310,7 @@
       "feat"
       "card2"
       "card3"
+      "qfcra"
       "card4"
       "card5"
       "card6"
